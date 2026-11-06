@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nestle_medical_congress/main.dart';
 import 'package:nestle_medical_congress/screens/agenda_screen.dart';
+import 'package:nestle_medical_congress/screens/ask_qa_screen.dart';
 import 'package:nestle_medical_congress/screens/home_screen.dart';
 import 'package:nestle_medical_congress/screens/live_voting_screen.dart';
 import 'package:nestle_medical_congress/screens/name_tag_screen.dart';
@@ -221,5 +222,31 @@ void main() {
     // Vote on an option in this poll
     await tester.tap(find.text('Pediatric Microbiome'));
     await tester.pumpAndSettle();
+  });
+
+  testWidgets('AskQAScreen (Screen 10) smoke test', (WidgetTester tester) async {
+    tester.view.physicalSize = const Size(800, 1400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(() => tester.view.resetPhysicalSize());
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: AskQAScreen(),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Ask Q&A'), findsOneWidget);
+    expect(find.text('Ask the Experts'), findsOneWidget);
+    expect(find.text('Write your question'), findsOneWidget);
+    expect(find.text('Submit Question'), findsOneWidget);
+
+    expect(find.text('Popular'), findsOneWidget);
+    expect(find.text('Recent'), findsOneWidget);
+    expect(find.text('Answered'), findsWidgets);
+
+    expect(find.text('How can pediatric nutrition plans be personalized for children with different growth patterns?'), findsOneWidget);
+    expect(find.text('Dr. Ahmed'), findsOneWidget);
+    expect(find.text('24'), findsOneWidget);
   });
 }

@@ -8,6 +8,7 @@ import '../widgets/quick_access_grid.dart';
 import '../widgets/search_filter_bar.dart';
 import '../widgets/upcoming_session_card.dart';
 import 'agenda_screen.dart';
+import 'ask_qa_screen.dart';
 import 'live_voting_screen.dart';
 import 'name_tag_screen.dart';
 import 'profile_screen.dart';
@@ -344,7 +345,13 @@ class _HomeScreenState extends State<HomeScreen> {
       QuickAccessItem(
         title: 'Ask Q&A',
         icon: Icons.chat_bubble_outline_rounded,
-        onTap: () => _showFeatureNotice('Ask Q&A'),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const AskQAScreen(),
+            ),
+          );
+        },
       ),
       QuickAccessItem(
         title: 'Resources',

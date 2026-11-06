@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
 import '../widgets/background_pattern.dart';
 import 'agenda_screen.dart';
+import 'ask_qa_screen.dart';
 import 'live_voting_screen.dart';
 import 'name_tag_screen.dart';
 import 'speakers_screen.dart';
@@ -152,6 +153,14 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => const LiveVotingScreen(),
+        ),
+      );
+      return;
+    }
+    if (tool.id == 'ask_qa') {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const AskQAScreen(),
         ),
       );
       return;
