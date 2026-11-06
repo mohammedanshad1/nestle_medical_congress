@@ -4,6 +4,7 @@ import 'package:nestle_medical_congress/main.dart';
 import 'package:nestle_medical_congress/screens/agenda_screen.dart';
 import 'package:nestle_medical_congress/screens/home_screen.dart';
 import 'package:nestle_medical_congress/screens/quick_access_screen.dart';
+import 'package:nestle_medical_congress/screens/speakers_screen.dart';
 
 void main() {
   testWidgets('Tapping Sign In on LoginScreen navigates directly to HomeScreen without validation', (WidgetTester tester) async {
@@ -74,37 +75,67 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    // Verify Title & Hero Card
     expect(find.text('Congress Agenda'), findsOneWidget);
     expect(find.text('Day 1 Schedule'), findsOneWidget);
     expect(find.text('Thursday, May 22, 2026'), findsOneWidget);
 
-    // Verify Day Switcher Tabs
     expect(find.text('Day 1'), findsOneWidget);
     expect(find.text('May 22'), findsOneWidget);
     expect(find.text('Day 2'), findsOneWidget);
     expect(find.text('May 23'), findsOneWidget);
 
-    // Verify Section Header
     expect(find.text("Today's Sessions"), findsOneWidget);
     expect(find.text('Reset'), findsOneWidget);
 
-    // Verify Category Pills
     expect(find.text('All'), findsOneWidget);
     expect(find.text('Keynote'), findsWidgets);
     expect(find.text('Nutrition'), findsWidgets);
     expect(find.text('Research'), findsWidgets);
 
-    // Verify Sessions
     expect(find.text('Opening Ceremony'), findsOneWidget);
     expect(find.text('Welcome &\nIntroduction'), findsOneWidget);
     expect(find.text('Future of Pediatric\nNutrition'), findsOneWidget);
 
-    // Switch to Day 2
     await tester.tap(find.text('Day 2'));
     await tester.pumpAndSettle();
 
     expect(find.text('Day 2 Schedule'), findsOneWidget);
     expect(find.text('Friday, May 23, 2026'), findsOneWidget);
+  });
+
+  testWidgets('SpeakersScreen (Screen 6) smoke test', (WidgetTester tester) async {
+    tester.view.physicalSize = const Size(800, 1400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(() => tester.view.resetPhysicalSize());
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: SpeakersScreen(),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    // Verify Title & Hero Banner
+    expect(find.text('Speakers'), findsOneWidget);
+    expect(find.text('Global Medical\nExperts'), findsOneWidget);
+    expect(find.text('Search speakers'), findsOneWidget);
+
+    // Verify Category Pills
+    expect(find.text('All'), findsOneWidget);
+    expect(find.text('Nutrition'), findsWidgets);
+    expect(find.text('Research'), findsWidgets);
+    expect(find.text('Pediatrics'), findsWidgets);
+    expect(find.text('Clinical'), findsWidgets);
+
+    // Verify Speakers
+    expect(find.text('FEATURED SPEAKER'), findsOneWidget);
+    expect(find.text('Dr. Sarah Johnson'), findsOneWidget);
+    expect(find.text('Dr. Hassan Ali'), findsOneWidget);
+
+    // Tap speaker to view bio modal
+    await tester.tap(find.text('Dr. Sarah Johnson'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Biography'), findsOneWidget);
   });
 }

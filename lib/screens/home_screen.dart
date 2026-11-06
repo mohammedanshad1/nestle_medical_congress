@@ -10,6 +10,7 @@ import '../widgets/upcoming_session_card.dart';
 import 'agenda_screen.dart';
 import 'profile_screen.dart';
 import 'quick_access_screen.dart';
+import 'speakers_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -296,7 +297,13 @@ class _HomeScreenState extends State<HomeScreen> {
       QuickAccessItem(
         title: 'Speakers',
         icon: Icons.groups_outlined,
-        onTap: () => _showFeatureNotice('Speakers'),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const SpeakersScreen(),
+            ),
+          );
+        },
       ),
       QuickAccessItem(
         title: 'Name Tag',
