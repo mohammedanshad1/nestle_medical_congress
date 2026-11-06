@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:nestle_medical_congress/main.dart';
 import 'package:nestle_medical_congress/screens/agenda_screen.dart';
 import 'package:nestle_medical_congress/screens/home_screen.dart';
+import 'package:nestle_medical_congress/screens/name_tag_screen.dart';
 import 'package:nestle_medical_congress/screens/quick_access_screen.dart';
 import 'package:nestle_medical_congress/screens/speakers_screen.dart';
 
@@ -115,27 +116,49 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    // Verify Title & Hero Banner
     expect(find.text('Speakers'), findsOneWidget);
     expect(find.text('Global Medical\nExperts'), findsOneWidget);
     expect(find.text('Search speakers'), findsOneWidget);
 
-    // Verify Category Pills
     expect(find.text('All'), findsOneWidget);
     expect(find.text('Nutrition'), findsWidgets);
     expect(find.text('Research'), findsWidgets);
     expect(find.text('Pediatrics'), findsWidgets);
     expect(find.text('Clinical'), findsWidgets);
 
-    // Verify Speakers
     expect(find.text('FEATURED SPEAKER'), findsOneWidget);
     expect(find.text('Dr. Sarah Johnson'), findsOneWidget);
     expect(find.text('Dr. Hassan Ali'), findsOneWidget);
 
-    // Tap speaker to view bio modal
     await tester.tap(find.text('Dr. Sarah Johnson'));
     await tester.pumpAndSettle();
 
     expect(find.text('Biography'), findsOneWidget);
+  });
+
+  testWidgets('NameTagScreen (Screen 7) smoke test', (WidgetTester tester) async {
+    tester.view.physicalSize = const Size(800, 1400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(() => tester.view.resetPhysicalSize());
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: NameTagScreen(),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('My Name Tag'), findsOneWidget);
+    expect(find.text('NESTLÉ MEDICAL'), findsOneWidget);
+    expect(find.text('CONGRESS 2026'), findsOneWidget);
+    expect(find.text('HL'), findsOneWidget);
+    expect(find.text('Huda Latheef'), findsOneWidget);
+    expect(find.text('Flutter Developer • Attendee'), findsOneWidget);
+    expect(find.text('Badge ID'), findsOneWidget);
+    expect(find.text('NMC-2026-001'), findsOneWidget);
+    expect(find.text('Location'), findsOneWidget);
+    expect(find.text('Dubai, UAE'), findsOneWidget);
+    expect(find.text('Congress Date'), findsOneWidget);
+    expect(find.text('22 - 23 May 2026'), findsOneWidget);
   });
 }

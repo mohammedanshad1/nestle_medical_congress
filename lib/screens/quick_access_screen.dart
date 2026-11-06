@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
 import '../widgets/background_pattern.dart';
 import 'agenda_screen.dart';
+import 'name_tag_screen.dart';
 import 'speakers_screen.dart';
 
 class QuickAccessTool {
@@ -125,6 +126,14 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => const SpeakersScreen(),
+        ),
+      );
+      return;
+    }
+    if (tool.id == 'name_tag') {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const NameTagScreen(),
         ),
       );
       return;
