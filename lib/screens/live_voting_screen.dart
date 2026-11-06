@@ -61,7 +61,7 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
         PollOption(
           title: 'Very Good',
           votes: 31,
-          barColor: const Color(0xFFF59E0B),
+          barColor: const Color(0xFFFDC55A),
         ),
         PollOption(
           title: 'Good',
@@ -91,7 +91,7 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
         PollOption(
           title: 'Infant Growth Trials',
           votes: 38,
-          barColor: const Color(0xFFF59E0B),
+          barColor: const Color(0xFFFDC55A),
         ),
         PollOption(
           title: 'Prebiotic Clinical Evidence',
@@ -116,7 +116,7 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
         PollOption(
           title: 'Maybe as an observer',
           votes: 28,
-          barColor: const Color(0xFFF59E0B),
+          barColor: const Color(0xFFFDC55A),
         ),
         PollOption(
           title: 'Not this session',
@@ -288,7 +288,7 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                               ),
                               child: const Icon(
                                 Icons.how_to_vote_rounded,
-                                color: Color(0xFFF59E0B),
+                                color: Color(0xFFFDC55A),
                                 size: 22,
                               ),
                             ),
@@ -337,13 +337,13 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
                                 colors: [
-                                  Color(0xFFFFB74D),
-                                  Color(0xFFF59E0B),
+                                  Color(0xFFFFD988),
+                                  Color(0xFFFDC55A),
                                 ],
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFF59E0B).withValues(alpha: 0.35),
+                                  color: const Color(0xFFFDC55A).withValues(alpha: 0.35),
                                   blurRadius: 12,
                                   offset: const Offset(0, 4),
                                 ),
@@ -475,7 +475,7 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                                                   width: 6,
                                                   height: 6,
                                                   decoration: const BoxDecoration(
-                                                    color: Color(0xFFF59E0B),
+                                                    color: Color(0xFFFDC55A),
                                                     shape: BoxShape.circle,
                                                   ),
                                                 ),

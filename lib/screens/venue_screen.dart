@@ -162,7 +162,7 @@ class VenueScreen extends StatelessWidget {
                               ),
                               child: const Icon(
                                 Icons.navigation_rounded,
-                                color: Color(0xFFF59E0B),
+                                color: Color(0xFFFDC55A),
                                 size: 22,
                               ),
                             ),

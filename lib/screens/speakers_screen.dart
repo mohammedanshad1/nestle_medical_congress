@@ -110,14 +110,17 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
   List<SpeakerModel> get _filteredSpeakers {
     final query = _searchController.text.trim().toLowerCase();
     return _allSpeakers.where((speaker) {
-      final matchesCategory = _selectedCategory == 'All' ||
+      final matchesCategory =
+          _selectedCategory == 'All' ||
           speaker.category.toLowerCase() == _selectedCategory.toLowerCase();
-      final matchesQuery = query.isEmpty ||
+      final matchesQuery =
+          query.isEmpty ||
           speaker.name.toLowerCase().contains(query) ||
           speaker.specialty.toLowerCase().contains(query) ||
           speaker.country.toLowerCase().contains(query) ||
           speaker.sessionTitle.toLowerCase().contains(query);
-      final matchesFavorites = !_onlyFavorites || _favoriteSpeakerIds.contains(speaker.id);
+      final matchesFavorites =
+          !_onlyFavorites || _favoriteSpeakerIds.contains(speaker.id);
       return matchesCategory && matchesQuery && matchesFavorites;
     }).toList();
   }
@@ -199,7 +202,11 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
                         ),
                         Row(
                           children: [
-                            const Icon(Icons.location_on_outlined, size: 13, color: Color(0xFF94A3B8)),
+                            const Icon(
+                              Icons.location_on_outlined,
+                              size: 13,
+                              color: Color(0xFF94A3B8),
+                            ),
                             const SizedBox(width: 3),
                             Text(
                               speaker.country,
@@ -245,7 +252,10 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
               const SizedBox(height: 6),
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 10,
+                ),
                 decoration: BoxDecoration(
                   color: const Color(0xFFF1F5F9),
                   borderRadius: BorderRadius.circular(14),
@@ -293,9 +303,7 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
 
             // Background Waves
             Positioned.fill(
-              child: CustomPaint(
-                painter: BackgroundPatternPainter(),
-              ),
+              child: CustomPaint(painter: BackgroundPatternPainter()),
             ),
 
             // Main Content Area
@@ -305,7 +313,10 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
                 children: [
                   // App Bar (Back Button + "Speakers" Title + Star Favorites Toggle)
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.responsiveHorizontalPadding,
+                      vertical: 8,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -319,10 +330,14 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
@@ -360,16 +375,22 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
                               child: Icon(
-                                _onlyFavorites ? Icons.star_rounded : Icons.star_outline_rounded,
-                                color: const Color(0xFFF59E0B),
+                                _onlyFavorites
+                                    ? Icons.star_rounded
+                                    : Icons.star_outline_rounded,
+                                color: const Color(0xFFFDC55A),
                                 size: 22,
                               ),
                             ),
@@ -381,7 +402,10 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
 
                   // Hero Banner Card: "Global Medical Experts"
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.responsiveHorizontalPadding,
+                      vertical: 8,
+                    ),
                     child: Container(
                       padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
@@ -417,14 +441,13 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
                               gradient: const LinearGradient(
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
-                                colors: [
-                                  Color(0xFF38BDF8),
-                                  Color(0xFF0D6BF5),
-                                ],
+                                colors: [Color(0xFF38BDF8), Color(0xFF0D6BF5)],
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFF0D6BF5).withValues(alpha: 0.35),
+                                  color: const Color(
+                                    0xFF0D6BF5,
+                                  ).withValues(alpha: 0.35),
                                   blurRadius: 12,
                                   offset: const Offset(0, 4),
                                 ),
@@ -493,7 +516,9 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Container(
                               height: 50,
-                              padding: const EdgeInsets.symmetric(horizontal: 14),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 14,
+                              ),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(22),
@@ -549,12 +574,16 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
                             height: 38,
                             child: ListView.separated(
                               scrollDirection: Axis.horizontal,
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                              ),
                               itemCount: _categories.length,
-                              separatorBuilder: (context, index) => const SizedBox(width: 10),
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(width: 10),
                               itemBuilder: (context, index) {
                                 final category = _categories[index];
-                                final isSelected = _selectedCategory == category;
+                                final isSelected =
+                                    _selectedCategory == category;
 
                                 return GestureDetector(
                                   onTap: () {
@@ -615,7 +644,12 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
                                     ),
                                   )
                                 : ListView.builder(
-                                    padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                                    padding: const EdgeInsets.fromLTRB(
+                                      20,
+                                      2,
+                                      20,
+                                      24,
+                                    ),
                                     physics: const BouncingScrollPhysics(),
                                     itemCount: _filteredSpeakers.length,
                                     itemBuilder: (context, index) {
@@ -708,7 +742,7 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
                         speaker.isFeatured ? 'FEATURED SPEAKER' : 'SPEAKER',
                         style: GoogleFonts.plusJakartaSans(
                           color: speaker.isFeatured
-                              ? const Color(0xFFF59E0B)
+                              ? const Color(0xFFFDC55A)
                               : AppColors.primaryBlue,
                           fontSize: 9.5,
                           fontWeight: FontWeight.w800,
@@ -790,8 +824,12 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
                   children: [
                     IconButton(
                       icon: Icon(
-                        isFavorite ? Icons.star_rounded : Icons.star_outline_rounded,
-                        color: isFavorite ? const Color(0xFFF59E0B) : const Color(0xFFCBD5E1),
+                        isFavorite
+                            ? Icons.star_rounded
+                            : Icons.star_outline_rounded,
+                        color: isFavorite
+                            ? const Color(0xFFFDC55A)
+                            : const Color(0xFFCBD5E1),
                         size: 23,
                       ),
                       onPressed: () => _toggleFavorite(speaker.id),
@@ -812,4 +850,3 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
     );
   }
 }
-

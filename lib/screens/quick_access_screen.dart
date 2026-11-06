@@ -294,7 +294,7 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
                               ),
                               child: Icon(
                                 _isGridView ? Icons.grid_view_rounded : Icons.view_agenda_rounded,
-                                color: const Color(0xFFF59E0B),
+                                color: const Color(0xFFFDC55A),
                                 size: 20,
                               ),
                             ),

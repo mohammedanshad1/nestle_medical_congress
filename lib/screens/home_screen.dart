@@ -394,7 +394,7 @@ class _HomeScreenState extends State<HomeScreen> {
           time: '08:30',
           period: 'AM',
           category: 'Keynote',
-          categoryColor: const Color(0xFFF59E0B),
+          categoryColor: AppColors.goldAccent,
           icon: Icons.calendar_today_outlined,
           title: 'Opening Ceremony',
           subtitle: 'Main Auditorium',

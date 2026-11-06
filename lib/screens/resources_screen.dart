@@ -95,10 +95,10 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
       title: 'Keynote Presentation Sli...',
       subtitle: 'The Next Era of Nutrition & Health',
       category: 'Slides',
-      categoryColor: const Color(0xFFF59E0B),
+      categoryColor: const Color(0xFFFDC55A),
       fileSize: '8.6 MB',
       icon: Icons.slideshow_rounded,
-      iconColor: const Color(0xFFF59E0B),
+      iconColor: const Color(0xFFFDC55A),
       iconBgColor: const Color(0xFFFEF3C7),
       description:
           'Full slide deck from the opening keynote session discussing microbiome advancements, bio-fortified formulations, and global healthcare trends.',
@@ -195,7 +195,7 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
           style: GoogleFonts.plusJakartaSans(fontWeight: FontWeight.w600),
         ),
         backgroundColor:
-            item.isBookmarked ? const Color(0xFFF59E0B) : AppColors.primaryBlue,
+            item.isBookmarked ? const Color(0xFFFDC55A) : AppColors.primaryBlue,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         duration: const Duration(seconds: 1),
@@ -421,7 +421,7 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                           ? Icons.bookmark_rounded
                           : Icons.bookmark_outline_rounded,
                       color: item.isBookmarked
-                          ? const Color(0xFFF59E0B)
+                          ? const Color(0xFFFDC55A)
                           : const Color(0xFF64748B),
                     ),
                   ),
@@ -604,7 +604,7 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                                 _selectedCategory == 'Saved'
                                     ? Icons.folder_rounded
                                     : Icons.folder_outlined,
-                                color: const Color(0xFFF59E0B),
+                                color: const Color(0xFFFDC55A),
                                 size: 22,
                               ),
                             ),
@@ -1030,7 +1030,7 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                                 ? Icons.bookmark_rounded
                                 : Icons.bookmark_outline_rounded,
                             color: item.isBookmarked
-                                ? const Color(0xFFF59E0B)
+                                ? const Color(0xFFFDC55A)
                                 : const Color(0xFF94A3B8),
                             size: 22,
                           ),

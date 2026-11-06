@@ -7,9 +7,9 @@ class AppColors {
   static const Color backgroundBottom = Color(0xFF050E20);
 
   // Gold accent colors
-  static const Color goldAccent = Color(0xFFF7BA2C);
-  static const Color goldBorder = Color(0xFFD4A744);
-  static const Color goldLight = Color(0xFFFFD56B);
+  static const Color goldAccent = Color(0xFFFDC55A);
+  static const Color goldBorder = Color(0xFFFDC55A);
+  static const Color goldLight = Color(0xFFFEE8AA);
 
   // Blue brand colors
   static const Color primaryBlue = Color(0xFF0D6BF5);

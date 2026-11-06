@@ -391,7 +391,7 @@ class _AskQAScreenState extends State<AskQAScreen> {
                               ),
                               child: const Icon(
                                 Icons.chat_bubble_rounded,
-                                color: Color(0xFFF59E0B),
+                                color: Color(0xFFFDC55A),
                                 size: 20,
                               ),
                             ),

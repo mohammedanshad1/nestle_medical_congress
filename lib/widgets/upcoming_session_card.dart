@@ -20,7 +20,7 @@ class UpcomingSessionCard extends StatefulWidget {
     required this.title,
     required this.subtitle,
     required this.icon,
-    this.categoryColor = const Color(0xFFF59E0B),
+    this.categoryColor = const Color(0xFFFDC55A),
     this.onTap,
   });
 

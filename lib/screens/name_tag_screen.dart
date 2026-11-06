@@ -134,7 +134,7 @@ class NameTagScreen extends StatelessWidget {
                               ),
                               child: const Icon(
                                 Icons.print_rounded,
-                                color: Color(0xFFF59E0B),
+                                color: Color(0xFFFDC55A),
                                 size: 22,
                               ),
                             ),
@@ -234,9 +234,9 @@ class NameTagScreen extends StatelessWidget {
                                     shape: BoxShape.circle,
                                     gradient: const SweepGradient(
                                       colors: [
-                                        Color(0xFFF59E0B),
+                                        Color(0xFFFDC55A),
                                         Color(0xFF38BDF8),
-                                        Color(0xFFF59E0B),
+                                        Color(0xFFFDC55A),
                                       ],
                                     ),
                                   ),
