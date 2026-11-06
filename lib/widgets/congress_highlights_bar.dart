@@ -90,7 +90,7 @@ class _HighlightItem extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.plusJakartaSans(
                     color: Colors.white,
-                    fontSize: 10,
+                    fontSize: 9,
                     fontWeight: FontWeight.w700,
                     height: 1.15,
                   ),
@@ -101,7 +101,7 @@ class _HighlightItem extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.plusJakartaSans(
                     color: Colors.white,
-                    fontSize: 10,
+                    fontSize: 8,
                     fontWeight: FontWeight.w600,
                     height: 1.15,
                   ),
