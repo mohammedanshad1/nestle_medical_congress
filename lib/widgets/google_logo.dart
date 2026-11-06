@@ -3,17 +3,43 @@ import 'package:flutter/material.dart';
 
 class GoogleLogo extends StatelessWidget {
   final double size;
+  final String? imageUrl;
 
-  const GoogleLogo({super.key, this.size = 22});
+  const GoogleLogo({
+    super.key,
+    this.size = 22,
+    this.imageUrl,
+  });
+
+  /// Official Google G brand logo from Google Identity CDN
+  static const String defaultUrl =
+      'https://developers.google.com/identity/images/g-logo.png';
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: size,
       height: size,
-      child: CustomPaint(
-        painter: _GoogleLogoPainter(),
+      child: Image.network(
+        imageUrl ?? defaultUrl,
+        width: size,
+        height: size,
+        fit: BoxFit.contain,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return _buildFallback();
+        },
+        errorBuilder: (context, error, stackTrace) {
+          return _buildFallback();
+        },
       ),
+    );
+  }
+
+  Widget _buildFallback() {
+    return CustomPaint(
+      size: Size(size, size),
+      painter: _GoogleLogoPainter(),
     );
   }
 }
@@ -73,4 +99,3 @@ class _GoogleLogoPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
-

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../widgets/apple_logo.dart';
 import '../widgets/background_pattern.dart';
 import '../widgets/congress_highlights_bar.dart';
 import '../widgets/google_logo.dart';
@@ -339,11 +340,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(width: 14),
                 Expanded(
                   child: _buildSocialButton(
-                    child: const Icon(
-                      Icons.apple,
-                      color: Colors.black,
-                      size: 25,
-                    ),
+                    child: const AppleLogo(size: 24),
                     onTap: () {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../widgets/apple_logo.dart';
 import '../widgets/background_pattern.dart';
 import '../widgets/google_logo.dart';
 
@@ -305,18 +306,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 Expanded(
                                   child: _buildSocialButton(
                                     child: const GoogleLogo(size: 20),
-                                    onTap: () {},
+                                    onTap: () {
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                          content: Text('Google Sign Up tapped'),
+                                          duration: Duration(seconds: 1),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                                 const SizedBox(width: 14),
                                 Expanded(
                                   child: _buildSocialButton(
-                                    child: const Icon(
-                                      Icons.apple,
-                                      color: Colors.black,
-                                      size: 24,
-                                    ),
-                                    onTap: () {},
+                                    child: const AppleLogo(size: 24),
+                                    onTap: () {
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                          content: Text('Apple Sign Up tapped'),
+                                          duration: Duration(seconds: 1),
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                               ],
