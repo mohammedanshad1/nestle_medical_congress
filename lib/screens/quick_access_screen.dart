@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
 import '../widgets/background_pattern.dart';
+import 'agenda_screen.dart';
 
 class QuickAccessTool {
   final String id;
@@ -111,6 +112,14 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
   }
 
   void _onToolTap(QuickAccessTool tool) {
+    if (tool.id == 'agenda') {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const AgendaScreen(),
+        ),
+      );
+      return;
+    }
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(

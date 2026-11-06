@@ -7,6 +7,7 @@ import '../widgets/featured_event_card.dart';
 import '../widgets/quick_access_grid.dart';
 import '../widgets/search_filter_bar.dart';
 import '../widgets/upcoming_session_card.dart';
+import 'agenda_screen.dart';
 import 'profile_screen.dart';
 import 'quick_access_screen.dart';
 
@@ -144,7 +145,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     _buildSectionHeader(
                       title: 'Upcoming Sessions',
                       actionText: 'View All >',
-                      onActionTap: () => _showFeatureNotice('Congress Agenda Schedule'),
+                      onActionTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const AgendaScreen(),
+                          ),
+                        );
+                      },
                     ),
 
                     const SizedBox(height: 12),
@@ -278,7 +285,13 @@ class _HomeScreenState extends State<HomeScreen> {
       QuickAccessItem(
         title: 'Agenda',
         icon: Icons.calendar_month_outlined,
-        onTap: () => _showFeatureNotice('Agenda'),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const AgendaScreen(),
+            ),
+          );
+        },
       ),
       QuickAccessItem(
         title: 'Speakers',
@@ -332,7 +345,13 @@ class _HomeScreenState extends State<HomeScreen> {
           icon: Icons.calendar_today_outlined,
           title: 'Opening Ceremony',
           subtitle: 'Main Auditorium',
-          onTap: () => _showFeatureNotice('Opening Ceremony'),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const AgendaScreen(),
+              ),
+            );
+          },
         ),
         UpcomingSessionCard(
           time: '09:30',
@@ -342,7 +361,13 @@ class _HomeScreenState extends State<HomeScreen> {
           icon: Icons.mic_none_rounded,
           title: 'Welcome & Introduction',
           subtitle: 'Dr. Hassan Ali',
-          onTap: () => _showFeatureNotice('Welcome & Introduction'),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const AgendaScreen(),
+              ),
+            );
+          },
         ),
         UpcomingSessionCard(
           time: '10:30',
@@ -352,7 +377,13 @@ class _HomeScreenState extends State<HomeScreen> {
           icon: Icons.eco_outlined,
           title: 'Future of Pediatric Nutrition',
           subtitle: 'Dr. Sarah Johnson',
-          onTap: () => _showFeatureNotice('Future of Pediatric Nutrition'),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const AgendaScreen(),
+              ),
+            );
+          },
         ),
       ],
     );
