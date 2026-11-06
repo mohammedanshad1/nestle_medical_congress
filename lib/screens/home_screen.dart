@@ -8,6 +8,7 @@ import '../widgets/quick_access_grid.dart';
 import '../widgets/search_filter_bar.dart';
 import '../widgets/upcoming_session_card.dart';
 import 'profile_screen.dart';
+import 'quick_access_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -124,7 +125,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     _buildSectionHeader(
                       title: 'Quick Access',
                       actionText: 'View All >',
-                      onActionTap: () => _showFeatureNotice('All Congress Tools'),
+                      onActionTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const QuickAccessScreen(),
+                          ),
+                        );
+                      },
                     ),
 
                     const SizedBox(height: 12),
