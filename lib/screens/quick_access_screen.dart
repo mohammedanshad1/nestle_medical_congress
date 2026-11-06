@@ -7,6 +7,7 @@ import 'agenda_screen.dart';
 import 'ask_qa_screen.dart';
 import 'live_voting_screen.dart';
 import 'name_tag_screen.dart';
+import 'resources_screen.dart';
 import 'speakers_screen.dart';
 import 'venue_screen.dart';
 
@@ -161,6 +162,14 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => const AskQAScreen(),
+        ),
+      );
+      return;
+    }
+    if (tool.id == 'resources') {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const ResourcesScreen(),
         ),
       );
       return;

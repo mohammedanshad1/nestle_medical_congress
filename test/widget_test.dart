@@ -7,6 +7,7 @@ import 'package:nestle_medical_congress/screens/home_screen.dart';
 import 'package:nestle_medical_congress/screens/live_voting_screen.dart';
 import 'package:nestle_medical_congress/screens/name_tag_screen.dart';
 import 'package:nestle_medical_congress/screens/quick_access_screen.dart';
+import 'package:nestle_medical_congress/screens/resources_screen.dart';
 import 'package:nestle_medical_congress/screens/speakers_screen.dart';
 import 'package:nestle_medical_congress/screens/venue_screen.dart';
 
@@ -248,5 +249,75 @@ void main() {
     expect(find.text('How can pediatric nutrition plans be personalized for children with different growth patterns?'), findsOneWidget);
     expect(find.text('Dr. Ahmed'), findsOneWidget);
     expect(find.text('24'), findsOneWidget);
+  });
+
+  testWidgets('ResourcesScreen (Screen 11) smoke test', (WidgetTester tester) async {
+    tester.view.physicalSize = const Size(800, 1400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(() => tester.view.resetPhysicalSize());
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: ResourcesScreen(),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    // App Bar & Hero Card
+    expect(find.text('Resources'), findsOneWidget);
+    expect(find.text('Congress Library'), findsOneWidget);
+    expect(find.text('Access presentations, documents and media files'), findsOneWidget);
+
+    // Search input
+    expect(find.text('Search resources'), findsOneWidget);
+
+    // Category pills
+    expect(find.text('All'), findsOneWidget);
+    expect(find.text('PDF'), findsWidgets);
+    expect(find.text('Slides'), findsWidgets);
+    expect(find.text('Videos'), findsWidgets);
+    expect(find.text('Saved'), findsWidgets);
+
+    // Initial items visible
+    expect(find.text('Congress Scientific Prog...'), findsOneWidget);
+    expect(find.text('Complete schedule and session de...'), findsOneWidget);
+    expect(find.text('4.2 MB'), findsOneWidget);
+
+    expect(find.text('Pediatric Nutrition Guide...'), findsOneWidget);
+    expect(find.text('Clinical reference material'), findsOneWidget);
+    expect(find.text('2.8 MB'), findsOneWidget);
+
+    expect(find.text('Keynote Presentation Sli...'), findsOneWidget);
+    expect(find.text('The Next Era of Nutrition & Health'), findsOneWidget);
+    expect(find.text('8.6 MB'), findsOneWidget);
+
+    // Filter by Slides
+    await tester.tap(find.text('Slides').first);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Keynote Presentation Sli...'), findsOneWidget);
+    expect(find.text('Congress Scientific Prog...'), findsNothing);
+
+    // Filter by PDF
+    await tester.tap(find.text('PDF').first);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Congress Scientific Prog...'), findsOneWidget);
+    expect(find.text('Pediatric Nutrition Guide...'), findsOneWidget);
+    expect(find.text('Keynote Presentation Sli...'), findsNothing);
+
+    // Search functionality
+    await tester.enterText(find.byType(TextField), 'Pediatric');
+    await tester.pumpAndSettle();
+
+    expect(find.text('Pediatric Nutrition Guide...'), findsOneWidget);
+    expect(find.text('Congress Scientific Prog...'), findsNothing);
+
+    // Clear search and reset to All
+    await tester.enterText(find.byType(TextField), '');
+    await tester.tap(find.text('All'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Congress Scientific Prog...'), findsOneWidget);
   });
 }

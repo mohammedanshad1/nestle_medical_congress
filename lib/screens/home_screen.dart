@@ -13,6 +13,7 @@ import 'live_voting_screen.dart';
 import 'name_tag_screen.dart';
 import 'profile_screen.dart';
 import 'quick_access_screen.dart';
+import 'resources_screen.dart';
 import 'speakers_screen.dart';
 import 'venue_screen.dart';
 
@@ -356,7 +357,13 @@ class _HomeScreenState extends State<HomeScreen> {
       QuickAccessItem(
         title: 'Resources',
         icon: Icons.folder_outlined,
-        onTap: () => _showFeatureNotice('Resources'),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const ResourcesScreen(),
+            ),
+          );
+        },
       ),
       QuickAccessItem(
         title: 'Exhibitors',
