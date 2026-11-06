@@ -8,6 +8,7 @@ import '../widgets/quick_access_grid.dart';
 import '../widgets/search_filter_bar.dart';
 import '../widgets/upcoming_session_card.dart';
 import 'agenda_screen.dart';
+import 'live_voting_screen.dart';
 import 'name_tag_screen.dart';
 import 'profile_screen.dart';
 import 'quick_access_screen.dart';
@@ -332,7 +333,13 @@ class _HomeScreenState extends State<HomeScreen> {
       QuickAccessItem(
         title: 'Voting',
         icon: Icons.bar_chart_rounded,
-        onTap: () => _showFeatureNotice('Voting'),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const LiveVotingScreen(),
+            ),
+          );
+        },
       ),
       QuickAccessItem(
         title: 'Ask Q&A',

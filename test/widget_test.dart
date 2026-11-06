@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:nestle_medical_congress/main.dart';
 import 'package:nestle_medical_congress/screens/agenda_screen.dart';
 import 'package:nestle_medical_congress/screens/home_screen.dart';
+import 'package:nestle_medical_congress/screens/live_voting_screen.dart';
 import 'package:nestle_medical_congress/screens/name_tag_screen.dart';
 import 'package:nestle_medical_congress/screens/quick_access_screen.dart';
 import 'package:nestle_medical_congress/screens/speakers_screen.dart';
@@ -186,5 +187,39 @@ void main() {
     expect(find.text('Parking'), findsOneWidget);
     expect(find.text('Catering'), findsOneWidget);
     expect(find.text('Accessible'), findsOneWidget);
+  });
+
+  testWidgets('LiveVotingScreen (Screen 9) smoke test', (WidgetTester tester) async {
+    tester.view.physicalSize = const Size(800, 1400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(() => tester.view.resetPhysicalSize());
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: LiveVotingScreen(),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Live Voting'), findsOneWidget);
+    expect(find.text('Audience Interaction'), findsOneWidget);
+    expect(find.text('VOTED'), findsOneWidget);
+    expect(find.text('Audience Feedback'), findsOneWidget);
+    expect(find.text('How would you rate the\ncurrent session?'), findsOneWidget);
+    expect(find.text('Excellent'), findsOneWidget);
+    expect(find.text('Very Good'), findsOneWidget);
+    expect(find.text('Good'), findsOneWidget);
+    expect(find.text('Needs Improvement'), findsOneWidget);
+    expect(find.text('Next Poll'), findsOneWidget);
+
+    // Tap Next Poll to switch polls
+    await tester.tap(find.text('Next Poll'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Which topic should be\nexpanded tomorrow?'), findsOneWidget);
+
+    // Vote on an option in this poll
+    await tester.tap(find.text('Pediatric Microbiome'));
+    await tester.pumpAndSettle();
   });
 }
