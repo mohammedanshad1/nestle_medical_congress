@@ -345,12 +345,11 @@ void main() {
     expect(find.text('Tap anywhere to continue →'), findsOneWidget);
   });
 
-  testWidgets('Responsive layouts on small mobile screen (320x568)', (WidgetTester tester) async {
+  testWidgets('Responsive layout small mobile LoginScreen', (WidgetTester tester) async {
     tester.view.physicalSize = const Size(320, 568);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(() => tester.view.resetPhysicalSize());
 
-    // Test LoginScreen on small device
     await tester.pumpWidget(
       const MaterialApp(
         home: LoginScreen(),
@@ -359,8 +358,13 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('NESTLÉ MEDICAL CONGRESS'), findsOneWidget);
     expect(find.text('Sign In'), findsOneWidget);
+  });
 
-    // Test RegisterScreen on small device
+  testWidgets('Responsive layout small mobile RegisterScreen', (WidgetTester tester) async {
+    tester.view.physicalSize = const Size(320, 568);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(() => tester.view.resetPhysicalSize());
+
     await tester.pumpWidget(
       const MaterialApp(
         home: RegisterScreen(),
@@ -369,8 +373,13 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Join the'), findsOneWidget);
     expect(find.text('Create Account'), findsOneWidget);
+  });
 
-    // Test HomeScreen on small device
+  testWidgets('Responsive layout small mobile HomeScreen', (WidgetTester tester) async {
+    tester.view.physicalSize = const Size(320, 568);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(() => tester.view.resetPhysicalSize());
+
     await tester.pumpWidget(
       const MaterialApp(
         home: HomeScreen(),

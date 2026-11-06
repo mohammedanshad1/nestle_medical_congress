@@ -49,9 +49,7 @@ class NameTagScreen extends StatelessWidget {
 
             // Background Organic Waves
             Positioned.fill(
-              child: CustomPaint(
-                painter: BackgroundPatternPainter(),
-              ),
+              child: CustomPaint(painter: BackgroundPatternPainter()),
             ),
 
             // Main Content Area
@@ -60,7 +58,10 @@ class NameTagScreen extends StatelessWidget {
                 children: [
                   // App Bar (Back Button + "My Name Tag" Title + Print Action)
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 8,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -74,10 +75,14 @@ class NameTagScreen extends StatelessWidget {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
@@ -111,7 +116,9 @@ class NameTagScreen extends StatelessWidget {
                                 SnackBar(
                                   content: Text(
                                     'Printing digital badge for $attendeeName...',
-                                    style: GoogleFonts.plusJakartaSans(fontWeight: FontWeight.w600),
+                                    style: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                   backgroundColor: AppColors.primaryBlue,
                                   behavior: SnackBarBehavior.floating,
@@ -125,10 +132,14 @@ class NameTagScreen extends StatelessWidget {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
@@ -157,11 +168,18 @@ class NameTagScreen extends StatelessWidget {
                       child: Center(
                         child: ConstrainedBox(
                           constraints: BoxConstraints(
-                            maxWidth: context.responsiveValue(mobile: 420.0, tablet: 520.0),
+                            maxWidth: context.responsiveValue(
+                              mobile: 420.0,
+                              tablet: 520.0,
+                            ),
                           ),
                           child: Container(
                             padding: EdgeInsets.all(
-                              context.responsiveValue(mobile: 20.0, smallPhone: 14.0, tablet: 26.0),
+                              context.responsiveValue(
+                                mobile: 20.0,
+                                smallPhone: 14.0,
+                                tablet: 26.0,
+                              ),
                             ),
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -180,7 +198,9 @@ class NameTagScreen extends StatelessWidget {
                                 // Top Gradient Header Banner
                                 Container(
                                   width: double.infinity,
-                                  padding: const EdgeInsets.symmetric(vertical: 18),
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 18,
+                                  ),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(24),
                                     gradient: const LinearGradient(
@@ -193,7 +213,9 @@ class NameTagScreen extends StatelessWidget {
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: const Color(0xFF0D6BF5).withValues(alpha: 0.35),
+                                        color: const Color(
+                                          0xFF0D6BF5,
+                                        ).withValues(alpha: 0.35),
                                         blurRadius: 14,
                                         offset: const Offset(0, 5),
                                       ),
@@ -230,6 +252,7 @@ class NameTagScreen extends StatelessWidget {
                                 Container(
                                   width: 98,
                                   height: 98,
+
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     gradient: const SweepGradient(
@@ -293,7 +316,9 @@ class NameTagScreen extends StatelessWidget {
                                       width: 22,
                                       height: 22,
                                       decoration: BoxDecoration(
-                                        color: AppColors.goldAccent.withValues(alpha: 0.15),
+                                        color: AppColors.goldAccent.withValues(
+                                          alpha: 0.15,
+                                        ),
                                         shape: BoxShape.circle,
                                       ),
                                       child: const Icon(
@@ -360,10 +385,7 @@ class NameTagScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0xFFF8FAFC),
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(
-          color: const Color(0xFFE2E8F0),
-          width: 1.1,
-        ),
+        border: Border.all(color: const Color(0xFFE2E8F0), width: 1.1),
       ),
       child: Row(
         children: [
@@ -374,11 +396,7 @@ class NameTagScreen extends StatelessWidget {
               color: const Color(0xFFEFF6FF),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(
-              icon,
-              color: AppColors.primaryBlue,
-              size: 20,
-            ),
+            child: Icon(icon, color: AppColors.primaryBlue, size: 20),
           ),
           const SizedBox(width: 14),
           Expanded(
@@ -410,4 +428,3 @@ class NameTagScreen extends StatelessWidget {
     );
   }
 }
-

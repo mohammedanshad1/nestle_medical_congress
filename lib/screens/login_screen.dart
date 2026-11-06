@@ -647,32 +647,35 @@ class _LoginScreenState extends State<LoginScreen> {
       onTap: _navigateToRegister,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Don't have an account? ",
-              style: GoogleFonts.plusJakartaSans(
-                color: const Color(0xFFCBD5E1),
-                fontSize: 13,
-                fontWeight: FontWeight.w500,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Don't have an account? ",
+                style: GoogleFonts.plusJakartaSans(
+                  color: const Color(0xFFCBD5E1),
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-            Text(
-              'Create Account',
-              style: GoogleFonts.plusJakartaSans(
+              Text(
+                'Create Account',
+                style: GoogleFonts.plusJakartaSans(
+                  color: AppColors.goldAccent,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const SizedBox(width: 4),
+              const Icon(
+                Icons.arrow_forward_rounded,
                 color: AppColors.goldAccent,
-                fontSize: 13,
-                fontWeight: FontWeight.w800,
+                size: 16,
               ),
-            ),
-            const SizedBox(width: 4),
-            const Icon(
-              Icons.arrow_forward_rounded,
-              color: AppColors.goldAccent,
-              size: 16,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

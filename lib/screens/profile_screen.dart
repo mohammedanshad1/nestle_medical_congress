@@ -104,28 +104,37 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 24),
 
-                      // Avatar
+                      // Avatar with Dual-Tone Gradient Ring
                       Stack(
                         alignment: Alignment.bottomRight,
                         children: [
                           Container(
-                            width: 96,
-                            height: 96,
-                            decoration: BoxDecoration(
+                            width: 98,
+                            height: 98,
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Colors.white,
-                              border: Border.all(
-                                color: const Color(0xFF38BDF8),
-                                width: 3.5,
+                              gradient: SweepGradient(
+                                colors: [
+                                  Color(0xFFFDC55A),
+                                  Color(0xFF38BDF8),
+                                  Color(0xFFFDC55A),
+                                ],
                               ),
                             ),
-                            child: Center(
-                              child: Text(
-                                'HL',
-                                style: GoogleFonts.plusJakartaSans(
-                                  color: AppColors.primaryBlue,
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.w900,
+                            padding: const EdgeInsets.all(3.5),
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'HL',
+                                  style: GoogleFonts.plusJakartaSans(
+                                    color: AppColors.primaryBlue,
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.w900,
+                                  ),
                                 ),
                               ),
                             ),
@@ -175,15 +184,15 @@ class ProfileScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
-                            color: AppColors.primaryBlue.withValues(alpha: 0.8),
+                            color: AppColors.goldAccent.withValues(alpha: 0.7),
                             width: 1.1,
                           ),
-                          color: AppColors.primaryBlue.withValues(alpha: 0.12),
+                          color: AppColors.goldAccent.withValues(alpha: 0.12),
                         ),
                         child: Text(
                           'ID: NMC-2026-001',
                           style: GoogleFonts.plusJakartaSans(
-                            color: const Color(0xFF60A5FA),
+                            color: AppColors.goldAccent,
                             fontSize: 11.5,
                             fontWeight: FontWeight.w700,
                           ),
@@ -320,7 +329,7 @@ class ProfileScreen extends StatelessWidget {
                 style: GoogleFonts.plusJakartaSans(
                   color: const Color(0xFF94A3B8),
                   fontSize: 11,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 2),
@@ -329,7 +338,7 @@ class ProfileScreen extends StatelessWidget {
                 style: GoogleFonts.plusJakartaSans(
                   color: AppColors.textDark,
                   fontSize: 14,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],
