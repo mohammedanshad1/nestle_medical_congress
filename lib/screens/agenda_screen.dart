@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../utils/responsive.dart';
 import '../widgets/background_pattern.dart';
 
 class CongressSession {
@@ -247,7 +248,7 @@ class _AgendaScreenState extends State<AgendaScreen> {
                 children: [
                   // App Bar (Back Button + "Congress Agenda" + Search Icon Button)
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -325,7 +326,7 @@ class _AgendaScreenState extends State<AgendaScreen> {
                   // Optional Inline Search Bar
                   if (_isSearching)
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+                      padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 6),
                       child: Container(
                         height: 46,
                         padding: const EdgeInsets.symmetric(horizontal: 14),
@@ -368,7 +369,7 @@ class _AgendaScreenState extends State<AgendaScreen> {
 
                   // Hero Banner Card ("Day X Schedule")
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 6),
                     child: Container(
                       padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
@@ -460,7 +461,7 @@ class _AgendaScreenState extends State<AgendaScreen> {
 
                   // Day Switcher Tabs (Day 1 / Day 2)
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding),
                     child: Row(
                       children: [
                         // Day 1 Tab

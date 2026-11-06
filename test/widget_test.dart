@@ -5,8 +5,11 @@ import 'package:nestle_medical_congress/screens/agenda_screen.dart';
 import 'package:nestle_medical_congress/screens/ask_qa_screen.dart';
 import 'package:nestle_medical_congress/screens/home_screen.dart';
 import 'package:nestle_medical_congress/screens/live_voting_screen.dart';
+import 'package:nestle_medical_congress/screens/login_screen.dart';
 import 'package:nestle_medical_congress/screens/name_tag_screen.dart';
+import 'package:nestle_medical_congress/screens/profile_screen.dart';
 import 'package:nestle_medical_congress/screens/quick_access_screen.dart';
+import 'package:nestle_medical_congress/screens/register_screen.dart';
 import 'package:nestle_medical_congress/screens/resources_screen.dart';
 import 'package:nestle_medical_congress/screens/speakers_screen.dart';
 import 'package:nestle_medical_congress/screens/splash_screen.dart';
@@ -340,5 +343,66 @@ void main() {
     expect(find.text('The Next Era of Nutrition & Health'), findsOneWidget);
     expect(find.text('Vienna • May 22–24, 2026'), findsOneWidget);
     expect(find.text('Tap anywhere to continue →'), findsOneWidget);
+  });
+
+  testWidgets('Responsive layouts on small mobile screen (320x568)', (WidgetTester tester) async {
+    tester.view.physicalSize = const Size(320, 568);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(() => tester.view.resetPhysicalSize());
+
+    // Test LoginScreen on small device
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: LoginScreen(),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('NESTLÉ MEDICAL CONGRESS'), findsOneWidget);
+    expect(find.text('Sign In'), findsOneWidget);
+
+    // Test RegisterScreen on small device
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: RegisterScreen(),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('Join the'), findsOneWidget);
+    expect(find.text('Create Account'), findsOneWidget);
+
+    // Test HomeScreen on small device
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: HomeScreen(),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('Quick Access'), findsOneWidget);
+  });
+
+  testWidgets('Responsive layouts on tablet screen (768x1024)', (WidgetTester tester) async {
+    tester.view.physicalSize = const Size(768, 1024);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(() => tester.view.resetPhysicalSize());
+
+    // Test QuickAccessScreen on tablet
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: QuickAccessScreen(),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('Quick Access'), findsOneWidget);
+    expect(find.text('Agenda'), findsOneWidget);
+
+    // Test ProfileScreen on tablet
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: ProfileScreen(),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('My Profile'), findsOneWidget);
+    expect(find.text('Huda Latheef'), findsOneWidget);
   });
 }

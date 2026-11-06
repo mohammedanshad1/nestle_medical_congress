@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../utils/responsive.dart';
 import '../widgets/background_pattern.dart';
 
 class PollOption {
@@ -215,7 +216,7 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                 children: [
                   // App Bar (Back Button + "Live Voting" Title + Ballot Action)
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -299,7 +300,7 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
 
                   // Hero Banner Card: "Audience Interaction"
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
                     child: Container(
                       padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(

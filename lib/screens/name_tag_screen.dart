@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../utils/responsive.dart';
 import '../widgets/background_pattern.dart';
 import '../widgets/badge_qr_code.dart';
 
@@ -149,12 +150,19 @@ class NameTagScreen extends StatelessWidget {
                   Expanded(
                     child: SingleChildScrollView(
                       physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 8),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.responsiveHorizontalPadding,
+                        vertical: context.responsiveVerticalPadding,
+                      ),
                       child: Center(
                         child: ConstrainedBox(
-                          constraints: const BoxConstraints(maxWidth: 420),
+                          constraints: BoxConstraints(
+                            maxWidth: context.responsiveValue(mobile: 420.0, tablet: 520.0),
+                          ),
                           child: Container(
-                            padding: const EdgeInsets.all(20),
+                            padding: EdgeInsets.all(
+                              context.responsiveValue(mobile: 20.0, smallPhone: 14.0, tablet: 26.0),
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(34),

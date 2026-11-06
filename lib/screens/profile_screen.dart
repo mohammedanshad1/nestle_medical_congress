@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../utils/responsive.dart';
 import '../widgets/background_pattern.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -29,216 +30,262 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           Positioned.fill(
-            child: CustomPaint(
-              painter: BackgroundPatternPainter(),
-            ),
+            child: CustomPaint(painter: BackgroundPatternPainter()),
           ),
           SafeArea(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              child: Column(
-                children: [
-                  // Header
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Center(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                padding: EdgeInsets.symmetric(
+                  horizontal: context.responsiveHorizontalPadding,
+                  vertical: context.responsiveVerticalPadding,
+                ),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: context.maxContentWidth,
+                  ),
+                  child: Column(
                     children: [
-                      Container(
-                        width: 42,
-                        height: 42,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF0F2650).withValues(alpha: 0.65),
-                          borderRadius: BorderRadius.circular(14),
-                          border: Border.all(
-                            color: const Color(0xFF1E4380).withValues(alpha: 0.6),
-                            width: 1,
+                      // Header
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: 42,
+                            height: 42,
+                            decoration: BoxDecoration(
+                              color: const Color(
+                                0xFF0F2650,
+                              ).withValues(alpha: 0.65),
+                              borderRadius: BorderRadius.circular(14),
+                              border: Border.all(
+                                color: const Color(
+                                  0xFF1E4380,
+                                ).withValues(alpha: 0.6),
+                                width: 1,
+                              ),
+                            ),
+                            child: const Icon(
+                              Icons.arrow_back_ios_new_rounded,
+                              color: Colors.white,
+                              size: 18,
+                            ),
                           ),
-                        ),
-                        child: const Icon(
-                          Icons.arrow_back_ios_new_rounded,
-                          color: Colors.white,
-                          size: 18,
-                        ),
+                          Text(
+                            'My Profile',
+                            style: GoogleFonts.plusJakartaSans(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                          Container(
+                            width: 42,
+                            height: 42,
+                            decoration: BoxDecoration(
+                              color: const Color(
+                                0xFF0F2650,
+                              ).withValues(alpha: 0.65),
+                              borderRadius: BorderRadius.circular(14),
+                              border: Border.all(
+                                color: const Color(
+                                  0xFF1E4380,
+                                ).withValues(alpha: 0.6),
+                                width: 1,
+                              ),
+                            ),
+                            child: const Icon(
+                              Icons.settings_outlined,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                          ),
+                        ],
                       ),
+                      const SizedBox(height: 24),
+
+                      // Avatar
+                      Stack(
+                        alignment: Alignment.bottomRight,
+                        children: [
+                          Container(
+                            width: 96,
+                            height: 96,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                              border: Border.all(
+                                color: const Color(0xFF38BDF8),
+                                width: 3.5,
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'HL',
+                                style: GoogleFonts.plusJakartaSans(
+                                  color: AppColors.primaryBlue,
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 30,
+                            height: 30,
+                            decoration: const BoxDecoration(
+                              color: AppColors.goldAccent,
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(
+                              Icons.edit_rounded,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 14),
+
                       Text(
-                        'My Profile',
+                        'Huda Latheef',
                         style: GoogleFonts.plusJakartaSans(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 24,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
-                      Container(
-                        width: 42,
-                        height: 42,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF0F2650).withValues(alpha: 0.65),
-                          borderRadius: BorderRadius.circular(14),
-                          border: Border.all(
-                            color: const Color(0xFF1E4380).withValues(alpha: 0.6),
-                            width: 1,
-                          ),
-                        ),
-                        child: const Icon(
-                          Icons.settings_outlined,
-                          color: Colors.white,
-                          size: 20,
+                      const SizedBox(height: 4),
+                      Text(
+                        'Medical Congress Attendee',
+                        style: GoogleFonts.plusJakartaSans(
+                          color: const Color(0xFFCBD5E1),
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 24),
+                      const SizedBox(height: 10),
 
-                  // Avatar
-                  Stack(
-                    alignment: Alignment.bottomRight,
-                    children: [
+                      // Badge ID Pill
                       Container(
-                        width: 96,
-                        height: 96,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                          border: Border.all(
-                            color: const Color(0xFF38BDF8),
-                            width: 3.5,
-                          ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 5,
                         ),
-                        child: Center(
-                          child: Text(
-                            'HL',
-                            style: GoogleFonts.plusJakartaSans(
-                              color: AppColors.primaryBlue,
-                              fontSize: 32,
-                              fontWeight: FontWeight.w900,
-                            ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: AppColors.primaryBlue.withValues(alpha: 0.8),
+                            width: 1.1,
+                          ),
+                          color: AppColors.primaryBlue.withValues(alpha: 0.12),
+                        ),
+                        child: Text(
+                          'ID: NMC-2026-001',
+                          style: GoogleFonts.plusJakartaSans(
+                            color: const Color(0xFF60A5FA),
+                            fontSize: 11.5,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
+                      const SizedBox(height: 22),
+
+                      // --- NEW WRAPPER CONTAINER START ---
                       Container(
-                        width: 30,
-                        height: 30,
+                        padding: const EdgeInsets.all(16),
                         decoration: const BoxDecoration(
-                          color: AppColors.goldAccent,
-                          shape: BoxShape.circle,
+                          color: Color(
+                            0xFFF8FAFC,
+                          ), // Light background like the image sheet
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(32),
+                            topRight: Radius.circular(32),
+                            bottomLeft: Radius.circular(32),
+                            bottomRight: Radius.circular(32),
+                          ),
                         ),
-                        child: const Icon(
-                          Icons.edit_rounded,
-                          color: Colors.white,
-                          size: 16,
+                        child: Column(
+                          children: [
+                            // Details Card
+                            Container(
+                              padding: const EdgeInsets.all(18),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(26),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withValues(alpha: 0.05),
+                                    blurRadius: 10,
+                                    offset: const Offset(0, 4),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                children: [
+                                  _buildProfileInfoRow(
+                                    icon: Icons.mail_outline_rounded,
+                                    label: 'Email',
+                                    value: 'huda@example.com',
+                                  ),
+                                  const Divider(
+                                    color: Color(0xFFF1F5F9),
+                                    height: 24,
+                                  ),
+                                  _buildProfileInfoRow(
+                                    icon: Icons.phone_outlined,
+                                    label: 'Phone',
+                                    value: '+971 56 283 4212',
+                                  ),
+                                  const Divider(
+                                    color: Color(0xFFF1F5F9),
+                                    height: 24,
+                                  ),
+                                  _buildProfileInfoRow(
+                                    icon: Icons.location_on_outlined,
+                                    label: 'Location',
+                                    value: 'Dubai, UAE',
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 18),
+
+                            // Stats Row
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: _buildStatCard(
+                                    icon: Icons.event_note_rounded,
+                                    count: '12',
+                                    label: 'Sessions',
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: _buildStatCard(
+                                    icon: Icons.bookmark_rounded,
+                                    count: '05',
+                                    label: 'Saved',
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: _buildStatCard(
+                                    icon: Icons.verified_outlined,
+                                    count: '03',
+                                    label: 'Certificates',
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
+                      // --- NEW WRAPPER CONTAINER END ---
                     ],
                   ),
-                  const SizedBox(height: 14),
-
-                  Text(
-                    'Huda Latheef',
-                    style: GoogleFonts.plusJakartaSans(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    'Medical Congress Attendee',
-                    style: GoogleFonts.plusJakartaSans(
-                      color: const Color(0xFFCBD5E1),
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-
-                  // Badge ID Pill
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: AppColors.primaryBlue.withValues(alpha: 0.8),
-                        width: 1.1,
-                      ),
-                      color: AppColors.primaryBlue.withValues(alpha: 0.12),
-                    ),
-                    child: Text(
-                      'ID: NMC-2026-001',
-                      style: GoogleFonts.plusJakartaSans(
-                        color: const Color(0xFF60A5FA),
-                        fontSize: 11.5,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 22),
-
-                  // Details Card
-                  Container(
-                    padding: const EdgeInsets.all(18),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(26),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.16),
-                          blurRadius: 20,
-                          offset: const Offset(0, 8),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        _buildProfileInfoRow(
-                          icon: Icons.mail_outline_rounded,
-                          label: 'Email',
-                          value: 'huda@example.com',
-                        ),
-                        const Divider(color: Color(0xFFF1F5F9), height: 24),
-                        _buildProfileInfoRow(
-                          icon: Icons.phone_outlined,
-                          label: 'Phone',
-                          value: '+971 56 283 4212',
-                        ),
-                        const Divider(color: Color(0xFFF1F5F9), height: 24),
-                        _buildProfileInfoRow(
-                          icon: Icons.location_on_outlined,
-                          label: 'Location',
-                          value: 'Dubai, UAE',
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 18),
-
-                  // Stats Row
-                  Row(
-                    children: [
-                      Expanded(
-                        child: _buildStatCard(
-                          icon: Icons.event_note_rounded,
-                          count: '12',
-                          label: 'Sessions',
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: _buildStatCard(
-                          icon: Icons.bookmark_rounded,
-                          count: '05',
-                          label: 'Saved',
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: _buildStatCard(
-                          icon: Icons.verified_outlined,
-                          count: '03',
-                          label: 'Certificates',
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                ),
               ),
             ),
           ),
@@ -304,8 +351,8 @@ class ProfileScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 14,
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 10,
             offset: const Offset(0, 4),
           ),
         ],
@@ -336,4 +383,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-

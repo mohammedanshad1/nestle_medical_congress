@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../utils/responsive.dart';
 import '../widgets/apple_logo.dart';
 import '../widgets/background_pattern.dart';
 import '../widgets/google_logo.dart';
@@ -66,69 +67,78 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Center(
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 12),
-                      // "Join the"
-                      Text(
-                        'Join the',
-                        style: GoogleFonts.plusJakartaSans(
-                          color: Colors.white,
-                          fontSize: 28,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 0.8,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: context.responsiveHorizontalPadding,
+                    vertical: context.responsiveVerticalPadding,
+                  ),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: context.maxContentWidth,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: context.responsiveValue(mobile: 12.0, smallPhone: 6.0)),
+                        // "Join the"
+                        Text(
+                          'Join the',
+                          style: GoogleFonts.plusJakartaSans(
+                            color: Colors.white,
+                            fontSize: context.responsiveValue(mobile: 28.0, smallPhone: 22.0, tablet: 32.0),
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: 0.8,
+                          ),
                         ),
-                      ),
-                      // "NESTLÉ"
-                      Text(
-                        'NESTLÉ',
-                        style: GoogleFonts.plusJakartaSans(
-                          color: AppColors.goldAccent,
-                          fontSize: 34,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: 1.5,
+                        // "NESTLÉ"
+                        Text(
+                          'NESTLÉ',
+                          style: GoogleFonts.plusJakartaSans(
+                            color: AppColors.goldAccent,
+                            fontSize: context.responsiveValue(mobile: 34.0, smallPhone: 26.0, tablet: 40.0),
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 1.5,
+                          ),
                         ),
-                      ),
-                      // "CONGRESS"
-                      Text(
-                        'CONGRESS',
-                        style: GoogleFonts.plusJakartaSans(
-                          color: AppColors.goldAccent,
-                          fontSize: 34,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: 1.5,
+                        // "CONGRESS"
+                        Text(
+                          'CONGRESS',
+                          style: GoogleFonts.plusJakartaSans(
+                            color: AppColors.goldAccent,
+                            fontSize: context.responsiveValue(mobile: 34.0, smallPhone: 26.0, tablet: 40.0),
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 1.5,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      // Subtitle
-                      Text(
-                        'Create your attendee profile and access\nsessions, resources, voting and Q&A.',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.plusJakartaSans(
-                          color: const Color(0xFFCBD5E1),
-                          fontSize: 13.5,
-                          fontWeight: FontWeight.w400,
-                          height: 1.4,
+                        SizedBox(height: context.responsiveValue(mobile: 10.0, smallPhone: 6.0)),
+                        // Subtitle
+                        Text(
+                          'Create your attendee profile and access\nsessions, resources, voting and Q&A.',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.plusJakartaSans(
+                            color: const Color(0xFFCBD5E1),
+                            fontSize: context.responsiveValue(mobile: 13.5, smallPhone: 12.0),
+                            fontWeight: FontWeight.w400,
+                            height: 1.4,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 24),
+                        SizedBox(height: context.responsiveValue(mobile: 24.0, smallPhone: 14.0)),
 
-                      // White Registration Card
-                      Container(
-                        padding: const EdgeInsets.all(22),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(32),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withValues(alpha: 0.2),
-                              blurRadius: 28,
-                              offset: const Offset(0, 10),
-                            ),
-                          ],
-                        ),
+                        // White Registration Card
+                        Container(
+                          padding: EdgeInsets.all(
+                            context.responsiveValue(mobile: 22.0, smallPhone: 16.0, tablet: 28.0),
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(32),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withValues(alpha: 0.2),
+                                blurRadius: 28,
+                                offset: const Offset(0, 10),
+                              ),
+                            ],
+                          ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
@@ -370,6 +380,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
             ),
+          ),
           ],
         ),
       ),

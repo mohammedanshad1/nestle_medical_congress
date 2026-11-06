@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../utils/responsive.dart';
 import '../widgets/background_pattern.dart';
 import '../widgets/map_preview_painter.dart';
 
@@ -175,10 +176,15 @@ class VenueScreen extends StatelessWidget {
                   Expanded(
                     child: SingleChildScrollView(
                       physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.responsiveHorizontalPadding,
+                        vertical: context.responsiveVerticalPadding,
+                      ),
                       child: Center(
                         child: ConstrainedBox(
-                          constraints: const BoxConstraints(maxWidth: 440),
+                          constraints: BoxConstraints(
+                            maxWidth: context.responsiveValue(mobile: 440.0, tablet: 620.0),
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
@@ -311,7 +317,7 @@ class VenueScreen extends StatelessWidget {
 
                               // Card 2: Map Preview Card
                               Container(
-                                height: 200,
+                                height: context.responsiveValue(mobile: 200.0, smallPhone: 160.0, tablet: 260.0),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(26),
                                   boxShadow: [

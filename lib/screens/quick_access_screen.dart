@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../utils/responsive.dart';
 import '../widgets/background_pattern.dart';
 import 'agenda_screen.dart';
 import 'ask_qa_screen.dart';
@@ -562,16 +563,25 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
     );
   }
 
-  // 2-Column Grid of Tools
+  // Responsive Grid of Tools
   Widget _buildToolsGrid(List<QuickAccessTool> tools) {
+    final columns = context.screenWidth >= 900
+        ? 4
+        : (context.isTablet ? 3 : 2);
+    final aspectRatio = context.responsiveValue(
+      mobile: context.screenWidth < 360 ? 0.82 : 0.88,
+      tablet: 1.05,
+    );
+    final hPad = context.responsiveHorizontalPadding;
+
     return GridView.builder(
-      padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
+      padding: EdgeInsets.fromLTRB(hPad, 4, hPad, 24),
       physics: const BouncingScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: columns,
         crossAxisSpacing: 14,
         mainAxisSpacing: 14,
-        childAspectRatio: 0.88,
+        childAspectRatio: aspectRatio,
       ),
       itemCount: tools.length,
       itemBuilder: (context, index) {

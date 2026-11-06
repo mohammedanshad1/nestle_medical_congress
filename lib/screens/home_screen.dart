@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../utils/responsive.dart';
 import '../widgets/background_pattern.dart';
 import '../widgets/featured_event_card.dart';
 import '../widgets/quick_access_grid.dart';
@@ -102,9 +103,14 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Center(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+              padding: EdgeInsets.symmetric(
+                horizontal: context.responsiveHorizontalPadding,
+                vertical: context.responsiveVerticalPadding,
+              ),
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 480),
+                constraints: BoxConstraints(
+                  maxWidth: context.responsiveValue(mobile: 480.0, tablet: 640.0),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -199,7 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 'Welcome Back,\nDr. Testing 👋',
                 style: GoogleFonts.plusJakartaSans(
                   color: Colors.white,
-                  fontSize: 27,
+                  fontSize: context.responsiveValue(mobile: 27.0, smallPhone: 22.0, tablet: 32.0),
                   fontWeight: FontWeight.w900,
                   height: 1.15,
                   letterSpacing: -0.3,
@@ -261,15 +267,20 @@ class _HomeScreenState extends State<HomeScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: GoogleFonts.plusJakartaSans(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.w800,
-            letterSpacing: -0.2,
+        Expanded(
+          child: Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: GoogleFonts.plusJakartaSans(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w800,
+              letterSpacing: -0.2,
+            ),
           ),
         ),
+        const SizedBox(width: 8),
         GestureDetector(
           onTap: onActionTap,
           child: Text(

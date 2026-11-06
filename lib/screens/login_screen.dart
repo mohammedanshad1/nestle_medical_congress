@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../utils/responsive.dart';
 import '../widgets/apple_logo.dart';
 import '../widgets/background_pattern.dart';
 import '../widgets/congress_highlights_bar.dart';
@@ -84,18 +85,23 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Center(
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: context.responsiveHorizontalPadding,
+                    vertical: context.responsiveVerticalPadding,
+                  ),
                   child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 440),
+                    constraints: BoxConstraints(
+                      maxWidth: context.maxContentWidth,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const SizedBox(height: 6),
+                        SizedBox(height: context.responsiveValue(mobile: 6.0, smallPhone: 2.0)),
 
                         // Top Golden Pill Badge: "NESTLÉ MEDICAL CONGRESS"
                         _buildTopCongressBadge(),
 
-                        const SizedBox(height: 16),
+                        SizedBox(height: context.responsiveValue(mobile: 16.0, smallPhone: 8.0)),
 
                         // Title: NESTLÉ CONGRESS
                         _buildCongressTitle(),
@@ -105,27 +111,27 @@ class _LoginScreenState extends State<LoginScreen> {
                         // Gold Accent Bar
                         _buildGoldAccentBar(),
 
-                        const SizedBox(height: 10),
+                        SizedBox(height: context.responsiveValue(mobile: 10.0, smallPhone: 6.0)),
 
                         // Subtitle: The Next Era of Nutrition & Health
                         _buildSubtitle(),
 
-                        const SizedBox(height: 20),
+                        SizedBox(height: context.responsiveValue(mobile: 20.0, smallPhone: 12.0)),
 
                         // White "Welcome Back" Card
                         _buildWelcomeCard(),
 
-                        const SizedBox(height: 18),
+                        SizedBox(height: context.responsiveValue(mobile: 18.0, smallPhone: 12.0)),
 
                         // "Don't have an account? Create Account ->"
                         _buildBottomAccountPrompt(),
 
-                        const SizedBox(height: 16),
+                        SizedBox(height: context.responsiveValue(mobile: 16.0, smallPhone: 10.0)),
 
                         // Bottom Highlights Info Bar
                         const CongressHighlightsBar(),
 
-                        const SizedBox(height: 12),
+                        SizedBox(height: context.responsiveValue(mobile: 12.0, smallPhone: 6.0)),
                       ],
                     ),
                   ),
@@ -164,13 +170,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
   // Congress Title
   Widget _buildCongressTitle() {
+    final titleFontSize = context.responsiveValue(mobile: 36.0, smallPhone: 28.0, tablet: 42.0);
+    final congressFontSize = context.responsiveValue(mobile: 38.0, smallPhone: 30.0, tablet: 44.0);
+
     return Column(
       children: [
         Text(
           'NESTLÉ',
           style: GoogleFonts.plusJakartaSans(
             color: Colors.white,
-            fontSize: 36,
+            fontSize: titleFontSize,
             fontWeight: FontWeight.w900,
             letterSpacing: 1.6,
             height: 1.05,
@@ -180,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
           'CONGRESS',
           style: GoogleFonts.plusJakartaSans(
             color: AppColors.goldAccent,
-            fontSize: 38,
+            fontSize: congressFontSize,
             fontWeight: FontWeight.w900,
             letterSpacing: 1.8,
             height: 1.05,
@@ -230,8 +239,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   // Main White "Welcome Back" Card
   Widget _buildWelcomeCard() {
+    final cardPadding = context.responsiveValue(mobile: 22.0, smallPhone: 16.0, tablet: 28.0);
     return Container(
-      padding: const EdgeInsets.all(22),
+      padding: EdgeInsets.all(cardPadding),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(32),
@@ -370,24 +380,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(
-                        Icons.lock_outline_rounded,
-                        color: AppColors.iconBlue,
-                        size: 16,
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        'Forgot password?',
-                        style: GoogleFonts.plusJakartaSans(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(
+                          Icons.lock_outline_rounded,
                           color: AppColors.iconBlue,
-                          fontSize: 13.5,
-                          fontWeight: FontWeight.w700,
+                          size: 16,
                         ),
-                      ),
-                    ],
+                        const SizedBox(width: 6),
+                        Text(
+                          'Forgot password?',
+                          style: GoogleFonts.plusJakartaSans(
+                            color: AppColors.iconBlue,
+                            fontSize: 13.5,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

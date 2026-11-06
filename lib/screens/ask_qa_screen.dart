@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../utils/responsive.dart';
 import '../widgets/background_pattern.dart';
 
 class QuestionModel {
@@ -318,7 +319,7 @@ class _AskQAScreenState extends State<AskQAScreen> {
                 children: [
                   // App Bar (Back Button + "Ask Q&A" Title + Comment Action)
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -402,7 +403,7 @@ class _AskQAScreenState extends State<AskQAScreen> {
 
                   // Hero Banner Card: "Ask the Experts"
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
                     child: Container(
                       padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
