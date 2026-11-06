@@ -12,6 +12,7 @@ import 'name_tag_screen.dart';
 import 'profile_screen.dart';
 import 'quick_access_screen.dart';
 import 'speakers_screen.dart';
+import 'venue_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -320,7 +321,13 @@ class _HomeScreenState extends State<HomeScreen> {
       QuickAccessItem(
         title: 'Venue',
         icon: Icons.location_on_outlined,
-        onTap: () => _showFeatureNotice('Venue'),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const VenueScreen(),
+            ),
+          );
+        },
       ),
       QuickAccessItem(
         title: 'Voting',

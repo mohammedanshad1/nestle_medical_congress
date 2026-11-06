@@ -6,6 +6,7 @@ import '../widgets/background_pattern.dart';
 import 'agenda_screen.dart';
 import 'name_tag_screen.dart';
 import 'speakers_screen.dart';
+import 'venue_screen.dart';
 
 class QuickAccessTool {
   final String id;
@@ -134,6 +135,14 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => const NameTagScreen(),
+        ),
+      );
+      return;
+    }
+    if (tool.id == 'venue') {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const VenueScreen(),
         ),
       );
       return;

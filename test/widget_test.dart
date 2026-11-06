@@ -6,6 +6,7 @@ import 'package:nestle_medical_congress/screens/home_screen.dart';
 import 'package:nestle_medical_congress/screens/name_tag_screen.dart';
 import 'package:nestle_medical_congress/screens/quick_access_screen.dart';
 import 'package:nestle_medical_congress/screens/speakers_screen.dart';
+import 'package:nestle_medical_congress/screens/venue_screen.dart';
 
 void main() {
   testWidgets('Tapping Sign In on LoginScreen navigates directly to HomeScreen without validation', (WidgetTester tester) async {
@@ -160,5 +161,30 @@ void main() {
     expect(find.text('Dubai, UAE'), findsOneWidget);
     expect(find.text('Congress Date'), findsOneWidget);
     expect(find.text('22 - 23 May 2026'), findsOneWidget);
+  });
+
+  testWidgets('VenueScreen (Screen 8) smoke test', (WidgetTester tester) async {
+    tester.view.physicalSize = const Size(800, 1400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(() => tester.view.resetPhysicalSize());
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: VenueScreen(),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Venue'), findsOneWidget);
+    expect(find.text('Dubai International\nConvention & Exhibition\nCenter'), findsOneWidget);
+    expect(find.text('22 - 23 May 2026'), findsOneWidget);
+    expect(find.text('Venue Address'), findsOneWidget);
+    expect(find.text('World Trade Centre, Dubai,\nUnited Arab Emirates'), findsOneWidget);
+    expect(find.text('Map Preview'), findsOneWidget);
+    expect(find.text('Venue Facilities'), findsOneWidget);
+    expect(find.text('Free Wi-Fi'), findsOneWidget);
+    expect(find.text('Parking'), findsOneWidget);
+    expect(find.text('Catering'), findsOneWidget);
+    expect(find.text('Accessible'), findsOneWidget);
   });
 }
