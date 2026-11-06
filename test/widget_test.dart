@@ -9,6 +9,7 @@ import 'package:nestle_medical_congress/screens/name_tag_screen.dart';
 import 'package:nestle_medical_congress/screens/quick_access_screen.dart';
 import 'package:nestle_medical_congress/screens/resources_screen.dart';
 import 'package:nestle_medical_congress/screens/speakers_screen.dart';
+import 'package:nestle_medical_congress/screens/splash_screen.dart';
 import 'package:nestle_medical_congress/screens/venue_screen.dart';
 
 void main() {
@@ -319,5 +320,25 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Congress Scientific Prog...'), findsOneWidget);
+  });
+
+  testWidgets('SplashScreen smoke test', (WidgetTester tester) async {
+    tester.view.physicalSize = const Size(800, 1400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(() => tester.view.resetPhysicalSize());
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: SplashScreen(autoNavigate: false),
+      ),
+    );
+    await tester.pump();
+
+    expect(find.text('NESTLÉ HEALTH SCIENCE'), findsOneWidget);
+    expect(find.text('NESTLÉ MEDICAL\nCONGRESS'), findsOneWidget);
+    expect(find.text('ANNUAL GLOBAL EDITION 2026'), findsOneWidget);
+    expect(find.text('The Next Era of Nutrition & Health'), findsOneWidget);
+    expect(find.text('Vienna • May 22–24, 2026'), findsOneWidget);
+    expect(find.text('Tap anywhere to continue →'), findsOneWidget);
   });
 }

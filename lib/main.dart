@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'constants/app_colors.dart';
-import 'screens/login_screen.dart';
+import 'screens/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,7 +9,8 @@ void main() {
 }
 
 class NestleCongressApp extends StatelessWidget {
-  const NestleCongressApp({super.key});
+  final Widget? home;
+  const NestleCongressApp({super.key, this.home});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class NestleCongressApp extends StatelessWidget {
           surface: AppColors.cardBackground,
         ),
       ),
-      home: const LoginScreen(),
+      home: home ?? const SplashScreen(),
     );
   }
 }
