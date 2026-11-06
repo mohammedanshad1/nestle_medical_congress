@@ -1,30 +1,55 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:nestle_medical_congress/main.dart';
+import 'package:nestle_medical_congress/screens/home_screen.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Nestle Medical Congress login screen smoke test', (WidgetTester tester) async {
+    await tester.pumpWidget(const NestleCongressApp());
+    await tester.pumpAndSettle();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('NESTLÉ'), findsOneWidget);
+    expect(find.text('CONGRESS'), findsOneWidget);
+    expect(find.text('Welcome Back'), findsOneWidget);
+    expect(find.text('Sign In'), findsOneWidget);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  testWidgets('Nestle Medical Congress Home Screen (Screen 3) smoke test', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: HomeScreen(),
+      ),
+    );
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify Header
+    expect(find.text('NESTLÉ MEDICAL CONGRESS'), findsOneWidget);
+    expect(find.text('Welcome Back,\nDr. Testing 👋'), findsOneWidget);
+
+    // Verify Search hint
+    expect(find.text('Search sessions, speakers, topi...'), findsOneWidget);
+
+    // Verify Featured Event
+    expect(find.text('FEATURED EVENT'), findsOneWidget);
+    expect(find.text('The Next Era of\nNutrition & Health'), findsOneWidget);
+
+    // Verify Quick Access Tools
+    expect(find.text('Quick Access'), findsOneWidget);
+    expect(find.text('Agenda'), findsOneWidget);
+    expect(find.text('Speakers'), findsOneWidget);
+    expect(find.text('Name Tag'), findsOneWidget);
+    expect(find.text('Venue'), findsOneWidget);
+    expect(find.text('Voting'), findsOneWidget);
+    expect(find.text('Ask Q&A'), findsOneWidget);
+    expect(find.text('Resources'), findsOneWidget);
+    expect(find.text('Exhibitors'), findsOneWidget);
+
+    // Verify Upcoming Sessions
+    expect(find.text('Upcoming Sessions'), findsOneWidget);
+    expect(find.text('Opening Ceremony'), findsOneWidget);
+
+    // Verify Bottom Navigation Bar
+    expect(find.text('Home'), findsOneWidget);
+    expect(find.text('Profile'), findsOneWidget);
   });
 }
