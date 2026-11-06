@@ -34,18 +34,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _handleSignIn() {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => const HomeScreen(),
-      ),
+      MaterialPageRoute(builder: (context) => const HomeScreen()),
     );
   }
 
   void _navigateToRegister() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const RegisterScreen(),
-      ),
-    );
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (context) => const RegisterScreen()));
   }
 
   @override
@@ -75,9 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
             // Background Curves, Ambient Glow, and Dot Grid Matrix
             Positioned.fill(
-              child: CustomPaint(
-                painter: BackgroundPatternPainter(),
-              ),
+              child: CustomPaint(painter: BackgroundPatternPainter()),
             ),
 
             // Scrollable Content
@@ -96,12 +90,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(height: context.responsiveValue(mobile: 6.0, smallPhone: 2.0)),
+                        SizedBox(
+                          height: context.responsiveValue(
+                            mobile: 6.0,
+                            smallPhone: 2.0,
+                          ),
+                        ),
 
                         // Top Golden Pill Badge: "NESTLÉ MEDICAL CONGRESS"
                         _buildTopCongressBadge(),
 
-                        SizedBox(height: context.responsiveValue(mobile: 16.0, smallPhone: 8.0)),
+                        SizedBox(
+                          height: context.responsiveValue(
+                            mobile: 16.0,
+                            smallPhone: 8.0,
+                          ),
+                        ),
 
                         // Title: NESTLÉ CONGRESS
                         _buildCongressTitle(),
@@ -111,27 +115,52 @@ class _LoginScreenState extends State<LoginScreen> {
                         // Gold Accent Bar
                         _buildGoldAccentBar(),
 
-                        SizedBox(height: context.responsiveValue(mobile: 10.0, smallPhone: 6.0)),
+                        SizedBox(
+                          height: context.responsiveValue(
+                            mobile: 10.0,
+                            smallPhone: 6.0,
+                          ),
+                        ),
 
                         // Subtitle: The Next Era of Nutrition & Health
                         _buildSubtitle(),
 
-                        SizedBox(height: context.responsiveValue(mobile: 20.0, smallPhone: 12.0)),
+                        SizedBox(
+                          height: context.responsiveValue(
+                            mobile: 20.0,
+                            smallPhone: 12.0,
+                          ),
+                        ),
 
                         // White "Welcome Back" Card
                         _buildWelcomeCard(),
 
-                        SizedBox(height: context.responsiveValue(mobile: 18.0, smallPhone: 12.0)),
+                        SizedBox(
+                          height: context.responsiveValue(
+                            mobile: 18.0,
+                            smallPhone: 12.0,
+                          ),
+                        ),
 
                         // "Don't have an account? Create Account ->"
                         _buildBottomAccountPrompt(),
 
-                        SizedBox(height: context.responsiveValue(mobile: 16.0, smallPhone: 10.0)),
+                        SizedBox(
+                          height: context.responsiveValue(
+                            mobile: 16.0,
+                            smallPhone: 10.0,
+                          ),
+                        ),
 
                         // Bottom Highlights Info Bar
                         const CongressHighlightsBar(),
 
-                        SizedBox(height: context.responsiveValue(mobile: 12.0, smallPhone: 6.0)),
+                        SizedBox(
+                          height: context.responsiveValue(
+                            mobile: 12.0,
+                            smallPhone: 6.0,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -170,8 +199,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
   // Congress Title
   Widget _buildCongressTitle() {
-    final titleFontSize = context.responsiveValue(mobile: 36.0, smallPhone: 28.0, tablet: 42.0);
-    final congressFontSize = context.responsiveValue(mobile: 38.0, smallPhone: 30.0, tablet: 44.0);
+    final titleFontSize = context.responsiveValue(
+      mobile: 36.0,
+      smallPhone: 28.0,
+      tablet: 42.0,
+    );
+    final congressFontSize = context.responsiveValue(
+      mobile: 38.0,
+      smallPhone: 30.0,
+      tablet: 44.0,
+    );
 
     return Column(
       children: [
@@ -239,7 +276,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   // Main White "Welcome Back" Card
   Widget _buildWelcomeCard() {
-    final cardPadding = context.responsiveValue(mobile: 22.0, smallPhone: 16.0, tablet: 28.0);
+    final cardPadding = context.responsiveValue(
+      mobile: 22.0,
+      smallPhone: 16.0,
+      tablet: 28.0,
+    );
     return Container(
       padding: EdgeInsets.all(cardPadding),
       decoration: BoxDecoration(
@@ -379,7 +420,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   );
                 },
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 4,
+                  ),
                   child: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Row(
@@ -446,11 +490,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           prefixIcon: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14),
-            child: Icon(
-              icon,
-              color: AppColors.iconBlue,
-              size: 21,
-            ),
+            child: Icon(icon, color: AppColors.iconBlue, size: 21),
           ),
           prefixIconConstraints: const BoxConstraints(
             minWidth: 44,
@@ -495,17 +535,11 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(22),
-            borderSide: const BorderSide(
-              color: Colors.redAccent,
-              width: 1.2,
-            ),
+            borderSide: const BorderSide(color: Colors.redAccent, width: 1.2),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(22),
-            borderSide: const BorderSide(
-              color: Colors.redAccent,
-              width: 1.5,
-            ),
+            borderSide: const BorderSide(color: Colors.redAccent, width: 1.5),
           ),
         ),
       ),
@@ -521,11 +555,7 @@ class _LoginScreenState extends State<LoginScreen> {
         gradient: const LinearGradient(
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
-          colors: [
-            Color(0xFF0052D4),
-            Color(0xFF0D6BF5),
-            Color(0xFF00B4D8),
-          ],
+          colors: [Color(0xFF0052D4), Color(0xFF0D6BF5), Color(0xFF00B4D8)],
         ),
         boxShadow: [
           BoxShadow(
@@ -570,12 +600,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildDivider() {
     return Row(
       children: [
-        const Expanded(
-          child: Divider(
-            color: Color(0xFFE5E7EB),
-            thickness: 1,
-          ),
-        ),
+        const Expanded(child: Divider(color: Color(0xFFE5E7EB), thickness: 1)),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Text(
@@ -588,12 +613,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
         ),
-        const Expanded(
-          child: Divider(
-            color: Color(0xFFE5E7EB),
-            thickness: 1,
-          ),
-        ),
+        const Expanded(child: Divider(color: Color(0xFFE5E7EB), thickness: 1)),
       ],
     );
   }
@@ -608,10 +628,7 @@ class _LoginScreenState extends State<LoginScreen> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: const Color(0xFFE5E7EB),
-          width: 1.2,
-        ),
+        border: Border.all(color: const Color(0xFFE5E7EB), width: 1.2),
       ),
       child: Material(
         color: Colors.transparent,
@@ -630,26 +647,32 @@ class _LoginScreenState extends State<LoginScreen> {
       onTap: _navigateToRegister,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4),
-        child: Text.rich(
-          TextSpan(
-            text: "Don't have an account? ",
-            style: GoogleFonts.plusJakartaSans(
-              color: const Color(0xFFCBD5E1),
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-            ),
-            children: [
-              TextSpan(
-                text: 'Create Account ->',
-                style: GoogleFonts.plusJakartaSans(
-                  color: AppColors.goldAccent,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w800,
-                ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Don't have an account? ",
+              style: GoogleFonts.plusJakartaSans(
+                color: const Color(0xFFCBD5E1),
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
               ),
-            ],
-          ),
-          textAlign: TextAlign.center,
+            ),
+            Text(
+              'Create Account',
+              style: GoogleFonts.plusJakartaSans(
+                color: AppColors.goldAccent,
+                fontSize: 13,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            const SizedBox(width: 4),
+            const Icon(
+              Icons.arrow_forward_rounded,
+              color: AppColors.goldAccent,
+              size: 16,
+            ),
+          ],
         ),
       ),
     );
