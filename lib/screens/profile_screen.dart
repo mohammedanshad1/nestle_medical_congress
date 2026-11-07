@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
 import '../utils/responsive.dart';
 import '../widgets/background_pattern.dart';
+import '../widgets/golden_medal_badge.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -296,7 +297,10 @@ class ProfileScreen extends StatelessWidget {
                                 const SizedBox(width: 12),
                                 Expanded(
                                   child: _buildStatCard(
-                                    icon: Icons.verified_outlined,
+                                    customIcon: const GoldenMedalBadge(
+                                      size: 20,
+                                      color: AppColors.primaryBlue,
+                                    ),
                                     count: '03',
                                     label: 'Certificates',
                                   ),
@@ -363,7 +367,8 @@ class ProfileScreen extends StatelessWidget {
   }
 
   Widget _buildStatCard({
-    required IconData icon,
+    IconData? icon,
+    Widget? customIcon,
     required String count,
     required String label,
   }) {
@@ -382,7 +387,16 @@ class ProfileScreen extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Icon(icon, color: AppColors.primaryBlue, size: 22),
+          SizedBox(
+            height: 24,
+            child: Center(
+              child:
+                  customIcon ??
+                  (icon != null
+                      ? Icon(icon, color: AppColors.primaryBlue, size: 22)
+                      : const SizedBox.shrink()),
+            ),
+          ),
           const SizedBox(height: 6),
           Text(
             count,

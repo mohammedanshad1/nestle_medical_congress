@@ -11,11 +11,7 @@ class MapPreviewPainter extends CustomPainter {
       ..shader = const LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        colors: [
-          Color(0xFFE2F1FC),
-          Color(0xFFEBF7FF),
-          Color(0xFFD9ECFB),
-        ],
+        colors: [Color(0xFFE2F1FC), Color(0xFFEBF7FF), Color(0xFFD9ECFB)],
       ).createShader(Rect.fromLTWH(0, 0, w, h));
 
     final RRect mapRRect = RRect.fromRectAndRadius(
@@ -71,4 +67,3 @@ class MapPreviewPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
-

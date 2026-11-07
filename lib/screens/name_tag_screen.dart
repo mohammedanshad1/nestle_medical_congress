@@ -5,6 +5,7 @@ import '../constants/app_colors.dart';
 import '../utils/responsive.dart';
 import '../widgets/background_pattern.dart';
 import '../widgets/badge_qr_code.dart';
+import '../widgets/golden_medal_badge.dart';
 
 class NameTagScreen extends StatelessWidget {
   final String attendeeName;
@@ -313,24 +314,10 @@ class NameTagScreen extends StatelessWidget {
                                 const SizedBox(height: 8),
 
                                 // Golden Ribbon Medal Icon
-                                Row(
+                                const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
-                                      width: 22,
-                                      height: 22,
-                                      decoration: BoxDecoration(
-                                        color: AppColors.goldAccent.withValues(
-                                          alpha: 0.15,
-                                        ),
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: const Icon(
-                                        Icons.verified_rounded,
-                                        color: AppColors.goldAccent,
-                                        size: 16,
-                                      ),
-                                    ),
+                                    GoldenMedalBadge(size: 24),
                                   ],
                                 ),
 
