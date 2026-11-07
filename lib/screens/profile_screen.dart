@@ -342,17 +342,17 @@ class ProfileScreen extends StatelessWidget {
                 label,
                 style: GoogleFonts.plusJakartaSans(
                   color: const Color(0xFF94A3B8),
-                  fontSize: 11,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 11.5,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-              const SizedBox(height: 2),
+              const SizedBox(height: 3),
               Text(
                 value,
                 style: GoogleFonts.plusJakartaSans(
                   color: AppColors.textDark,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 14.5,
+                  fontWeight: FontWeight.w800,
                 ),
               ),
             ],
