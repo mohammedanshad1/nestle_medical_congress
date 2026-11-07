@@ -43,6 +43,19 @@ void main() {
     expect(find.text('Agenda'), findsOneWidget);
     expect(find.text('Home'), findsOneWidget);
     expect(find.text('Profile'), findsOneWidget);
+
+    // Tap Profile tab in bottom nav bar
+    await tester.tap(find.text('Profile'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Huda Latheef'), findsOneWidget);
+    expect(find.text('ID: NMC-2026-001'), findsOneWidget);
+
+    // Tap Home tab to return
+    await tester.tap(find.text('Home'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Welcome Back,\nDr. Testing 👋'), findsOneWidget);
   });
 
   testWidgets('QuickAccessScreen (Screen 4) smoke test', (WidgetTester tester) async {

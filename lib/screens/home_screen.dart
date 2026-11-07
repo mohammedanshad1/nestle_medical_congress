@@ -425,6 +425,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Bottom Navigation Bar with Home and Profile Tabs
   Widget _buildBottomNavigationBar() {
+    final bottomInset = context.screenPadding.bottom;
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFF061226).withValues(alpha: 0.95),
@@ -432,23 +433,32 @@ class _HomeScreenState extends State<HomeScreen> {
           top: BorderSide(color: Color(0xFF12284C), width: 1.0),
         ),
       ),
-      padding: const EdgeInsets.only(top: 8, bottom: 20),
+      padding: EdgeInsets.fromLTRB(
+        context.responsiveValue(mobile: 16.0, smallPhone: 10.0, tablet: 24.0),
+        8,
+        context.responsiveValue(mobile: 16.0, smallPhone: 10.0, tablet: 24.0),
+        bottomInset > 0 ? bottomInset + 4 : 16,
+      ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          // Home Tab
-          _buildNavItem(
-            index: 0,
-            icon: Icons.home_rounded,
-            label: 'Home',
-            isSelected: _currentTabIndex == 0,
+          // Home Tab (Half Portion)
+          Expanded(
+            child: _buildNavItem(
+              index: 0,
+              icon: Icons.home_rounded,
+              label: 'Home',
+              isSelected: _currentTabIndex == 0,
+            ),
           ),
-          // Profile Tab
-          _buildNavItem(
-            index: 1,
-            icon: Icons.person_outline_rounded,
-            label: 'Profile',
-            isSelected: _currentTabIndex == 1,
+          const SizedBox(width: 8),
+          // Profile Tab (Half Portion)
+          Expanded(
+            child: _buildNavItem(
+              index: 1,
+              icon: Icons.person_outline_rounded,
+              label: 'Profile',
+              isSelected: _currentTabIndex == 1,
+            ),
           ),
         ],
       ),
@@ -468,35 +478,43 @@ class _HomeScreenState extends State<HomeScreen> {
           _currentTabIndex = index;
         });
       },
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 5),
-            decoration: BoxDecoration(
-              color: isSelected
-                  ? const Color(0xFF0F3A7A).withValues(alpha: 0.8)
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Icon(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? const Color(0xFF0F3268).withValues(alpha: 0.9)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(
+            color: isSelected
+                ? const Color(0xFF1E4D94).withValues(alpha: 0.8)
+                : Colors.transparent,
+            width: 1.2,
+          ),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(
               icon,
-              color: isSelected
-                  ? const Color(0xFF38BDF8)
-                  : const Color(0xFF64748B),
+              color: isSelected ? Colors.white : const Color(0xFF64748B),
               size: 22,
             ),
-          ),
-          const SizedBox(height: 3),
-          Text(
-            label,
-            style: GoogleFonts.plusJakartaSans(
-              color: isSelected ? Colors.white : const Color(0xFF64748B),
-              fontSize: 11.5,
-              fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+            const SizedBox(height: 3),
+            Text(
+              label,
+              style: GoogleFonts.plusJakartaSans(
+                color: isSelected ? Colors.white : const Color(0xFF64748B),
+                fontSize: 12,
+                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
