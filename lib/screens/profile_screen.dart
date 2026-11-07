@@ -46,10 +46,10 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      // Header
+                      // Header (Back Button + Title aligned left + Settings pushed right)
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          // Back Button
                           Container(
                             width: 42,
                             height: 42,
@@ -71,6 +71,10 @@ class ProfileScreen extends StatelessWidget {
                               size: 18,
                             ),
                           ),
+
+                          const SizedBox(width: 16),
+
+                          // Title (Now on the left)
                           Text(
                             'My Profile',
                             style: GoogleFonts.plusJakartaSans(
@@ -79,6 +83,11 @@ class ProfileScreen extends StatelessWidget {
                               fontWeight: FontWeight.w800,
                             ),
                           ),
+
+                          // Spacer to push settings icon to the right
+                          const Spacer(),
+
+                          // Settings Icon
                           Container(
                             width: 42,
                             height: 42,

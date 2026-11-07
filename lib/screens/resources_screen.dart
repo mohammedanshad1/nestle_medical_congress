@@ -170,7 +170,8 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
       };
 
       // Search query
-      final matchesQuery = query.isEmpty ||
+      final matchesQuery =
+          query.isEmpty ||
           item.title.toLowerCase().contains(query) ||
           item.subtitle.toLowerCase().contains(query) ||
           item.description.toLowerCase().contains(query) ||
@@ -194,8 +195,9 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
               : 'Removed "${item.title}" from bookmarks',
           style: GoogleFonts.plusJakartaSans(fontWeight: FontWeight.w600),
         ),
-        backgroundColor:
-            item.isBookmarked ? const Color(0xFFFDC55A) : AppColors.primaryBlue,
+        backgroundColor: item.isBookmarked
+            ? const Color(0xFFFDC55A)
+            : AppColors.primaryBlue,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         duration: const Duration(seconds: 1),
@@ -214,8 +216,9 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
           ),
           backgroundColor: const Color(0xFF10B981),
           behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
           duration: const Duration(seconds: 1),
         ),
       );
@@ -284,9 +287,7 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                       color: item.iconBgColor,
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: Center(
-                      child: _buildItemBadgeIcon(item),
-                    ),
+                    child: Center(child: _buildItemBadgeIcon(item)),
                   ),
                   const SizedBox(width: 14),
                   Expanded(
@@ -295,7 +296,9 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                       children: [
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 3),
+                            horizontal: 8,
+                            vertical: 3,
+                          ),
                           decoration: BoxDecoration(
                             color: item.categoryColor.withValues(alpha: 0.12),
                             borderRadius: BorderRadius.circular(6),
@@ -472,20 +475,10 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
     if (item.category == 'PDF') {
       return Stack(
         alignment: Alignment.center,
-        children: [
-          Icon(
-            item.icon,
-            color: item.iconColor,
-            size: 30,
-          ),
-        ],
+        children: [Icon(item.icon, color: item.iconColor, size: 30)],
       );
     }
-    return Icon(
-      item.icon,
-      color: item.iconColor,
-      size: 28,
-    );
+    return Icon(item.icon, color: item.iconColor, size: 28);
   }
 
   @override
@@ -517,9 +510,7 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
 
             // Background Curves Pattern
             Positioned.fill(
-              child: CustomPaint(
-                painter: BackgroundPatternPainter(),
-              ),
+              child: CustomPaint(painter: BackgroundPatternPainter()),
             ),
 
             // Main Layout
@@ -527,12 +518,13 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
               bottom: false,
               child: Column(
                 children: [
-                  // App Bar (Back Button + Title + Folder Action)
+                  // App Bar (Back Button + Title aligned left + Folder Action pushed right)
                   Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.responsiveHorizontalPadding,
+                      vertical: 8,
+                    ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Back Button
                         Material(
@@ -544,12 +536,14 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650)
-                                    .withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380)
-                                      .withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
@@ -562,7 +556,9 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                           ),
                         ),
 
-                        // Title
+                        const SizedBox(width: 16),
+
+                        // Title (Now on the left)
                         Text(
                           'Resources',
                           style: GoogleFonts.plusJakartaSans(
@@ -572,6 +568,9 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                             letterSpacing: -0.3,
                           ),
                         ),
+
+                        // Spacer to push the folder action to the right
+                        const Spacer(),
 
                         // Folder / Saved Bookmark Action Icon
                         Material(
@@ -591,12 +590,14 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650)
-                                    .withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380)
-                                      .withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
@@ -618,16 +619,19 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
 
                   // Hero Banner Card: "Congress Library"
                   Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.responsiveHorizontalPadding,
+                      vertical: 8,
+                    ),
                     child: Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: const Color(0xFF0F2650).withValues(alpha: 0.65),
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
-                          color:
-                              const Color(0xFF1E4380).withValues(alpha: 0.55),
+                          color: const Color(
+                            0xFF1E4380,
+                          ).withValues(alpha: 0.55),
                           width: 1.2,
                         ),
                       ),
@@ -646,8 +650,9 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                               borderRadius: BorderRadius.circular(16),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFF0D6BF5)
-                                      .withValues(alpha: 0.35),
+                                  color: const Color(
+                                    0xFF0D6BF5,
+                                  ).withValues(alpha: 0.35),
                                   blurRadius: 14,
                                   offset: const Offset(0, 5),
                                 ),
@@ -728,8 +733,9 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                                   width: 1.2,
                                 ),
                               ),
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                              ),
                               child: Row(
                                 children: [
                                   const Icon(
@@ -784,8 +790,9 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                             height: 38,
                             child: ListView.separated(
                               scrollDirection: Axis.horizontal,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                              ),
                               itemCount: _categories.length,
                               separatorBuilder: (context, index) =>
                                   const SizedBox(width: 10),
@@ -856,7 +863,11 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                                 ? _buildEmptyState()
                                 : ListView.separated(
                                     padding: const EdgeInsets.fromLTRB(
-                                        20, 4, 20, 24),
+                                      20,
+                                      4,
+                                      20,
+                                      24,
+                                    ),
                                     itemCount: filteredList.length,
                                     separatorBuilder: (context, index) =>
                                         const SizedBox(height: 14),
@@ -885,10 +896,7 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(
-          color: const Color(0xFFF1F5F9),
-          width: 1.5,
-        ),
+        border: Border.all(color: const Color(0xFFF1F5F9), width: 1.5),
         boxShadow: [
           BoxShadow(
             color: const Color(0xFF0F172A).withValues(alpha: 0.04),
@@ -915,9 +923,7 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                     color: item.iconBgColor,
                     borderRadius: BorderRadius.circular(18),
                   ),
-                  child: Center(
-                    child: _buildItemBadgeIcon(item),
-                  ),
+                  child: Center(child: _buildItemBadgeIcon(item)),
                 ),
 
                 const SizedBox(width: 14),
@@ -1121,8 +1127,10 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(14),
                 ),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 12,
+                ),
               ),
               onPressed: () {
                 setState(() {
@@ -1144,4 +1152,3 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
     );
   }
 }
-

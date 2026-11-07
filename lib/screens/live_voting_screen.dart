@@ -63,11 +63,7 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
           votes: 31,
           barColor: const Color(0xFFFDC55A),
         ),
-        PollOption(
-          title: 'Good',
-          votes: 10,
-          barColor: const Color(0xFF38BDF8),
-        ),
+        PollOption(title: 'Good', votes: 10, barColor: const Color(0xFF38BDF8)),
         PollOption(
           title: 'Needs Improvement',
           votes: 5,
@@ -146,9 +142,7 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
         ),
         backgroundColor: AppColors.primaryBlue,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         duration: const Duration(seconds: 1),
       ),
     );
@@ -204,9 +198,7 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
 
             // Background Organic Waves
             Positioned.fill(
-              child: CustomPaint(
-                painter: BackgroundPatternPainter(),
-              ),
+              child: CustomPaint(painter: BackgroundPatternPainter()),
             ),
 
             // Content Area
@@ -214,11 +206,13 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
               bottom: false,
               child: Column(
                 children: [
-                  // App Bar (Back Button + "Live Voting" Title + Ballot Action)
+                  // App Bar (Back Button + Title aligned left + Ballot Action pushed right)
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.responsiveHorizontalPadding,
+                      vertical: 8,
+                    ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Back Button
                         Material(
@@ -230,10 +224,14 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
@@ -246,7 +244,9 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                           ),
                         ),
 
-                        // Title
+                        const SizedBox(width: 16),
+
+                        // Title (Now on the left)
                         Text(
                           'Live Voting',
                           style: GoogleFonts.plusJakartaSans(
@@ -256,6 +256,9 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                             letterSpacing: -0.3,
                           ),
                         ),
+
+                        // Spacer to push the ballot action to the right
+                        const Spacer(),
 
                         // Ballot / History Action
                         Material(
@@ -267,7 +270,9 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                                 SnackBar(
                                   content: Text(
                                     'Viewing all congress live polls...',
-                                    style: GoogleFonts.plusJakartaSans(fontWeight: FontWeight.w600),
+                                    style: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                   backgroundColor: AppColors.primaryBlue,
                                   behavior: SnackBarBehavior.floating,
@@ -279,10 +284,14 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
@@ -300,7 +309,10 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
 
                   // Hero Banner Card: "Audience Interaction"
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.responsiveHorizontalPadding,
+                      vertical: 8,
+                    ),
                     child: Container(
                       padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
@@ -336,14 +348,13 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                               gradient: const LinearGradient(
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
-                                colors: [
-                                  Color(0xFFFFD988),
-                                  Color(0xFFFDC55A),
-                                ],
+                                colors: [Color(0xFFFFD988), Color(0xFFFDC55A)],
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFFDC55A).withValues(alpha: 0.35),
+                                  color: const Color(
+                                    0xFFFDC55A,
+                                  ).withValues(alpha: 0.35),
                                   blurRadius: 12,
                                   offset: const Offset(0, 4),
                                 ),
@@ -413,7 +424,9 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                               final isCurrent = index == _currentPollIndex;
                               return AnimatedContainer(
                                 duration: const Duration(milliseconds: 250),
-                                margin: const EdgeInsets.symmetric(horizontal: 4),
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 4,
+                                ),
                                 width: isCurrent ? 24 : 7,
                                 height: 6,
                                 decoration: BoxDecoration(
@@ -432,7 +445,9 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                           Expanded(
                             child: SingleChildScrollView(
                               physics: const BouncingScrollPhysics(),
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                              ),
                               child: Container(
                                 padding: const EdgeInsets.all(18),
                                 decoration: BoxDecoration(
@@ -444,7 +459,9 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black.withValues(alpha: 0.04),
+                                      color: Colors.black.withValues(
+                                        alpha: 0.04,
+                                      ),
                                       blurRadius: 12,
                                       offset: const Offset(0, 4),
                                     ),
@@ -455,7 +472,8 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                                   children: [
                                     // Header: Category Pill & Subtitle
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         // "VOTED" Badge
                                         if (currentPoll.userVotedIndex != null)
@@ -466,7 +484,8 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                                             ),
                                             decoration: BoxDecoration(
                                               color: const Color(0xFFFEF3C7),
-                                              borderRadius: BorderRadius.circular(12),
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
                                             ),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
@@ -474,20 +493,27 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                                                 Container(
                                                   width: 6,
                                                   height: 6,
-                                                  decoration: const BoxDecoration(
-                                                    color: Color(0xFFFDC55A),
-                                                    shape: BoxShape.circle,
-                                                  ),
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                        color: Color(
+                                                          0xFFFDC55A,
+                                                        ),
+                                                        shape: BoxShape.circle,
+                                                      ),
                                                 ),
                                                 const SizedBox(width: 5),
                                                 Text(
                                                   'VOTED',
-                                                  style: GoogleFonts.plusJakartaSans(
-                                                    color: const Color(0xFFD97706),
-                                                    fontSize: 10.5,
-                                                    fontWeight: FontWeight.w800,
-                                                    letterSpacing: 0.8,
-                                                  ),
+                                                  style:
+                                                      GoogleFonts.plusJakartaSans(
+                                                        color: const Color(
+                                                          0xFFD97706,
+                                                        ),
+                                                        fontSize: 10.5,
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                        letterSpacing: 0.8,
+                                                      ),
                                                 ),
                                               ],
                                             ),
@@ -538,12 +564,16 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                                       children: List.generate(
                                         currentPoll.options.length,
                                         (index) {
-                                          final option = currentPoll.options[index];
-                                          final isSelected = currentPoll.userVotedIndex == index;
+                                          final option =
+                                              currentPoll.options[index];
+                                          final isSelected =
+                                              currentPoll.userVotedIndex ==
+                                              index;
                                           final double percent = totalVotes == 0
                                               ? 0.0
                                               : (option.votes / totalVotes);
-                                          final int percentInt = (percent * 100).round();
+                                          final int percentInt = (percent * 100)
+                                              .round();
 
                                           return _buildOptionCard(
                                             index: index,
@@ -569,7 +599,9 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                                 // Previous Button
                                 _buildNavArrowButton(
                                   icon: Icons.arrow_back_rounded,
-                                  onTap: _currentPollIndex > 0 ? _previousPoll : null,
+                                  onTap: _currentPollIndex > 0
+                                      ? _previousPoll
+                                      : null,
                                 ),
                                 const SizedBox(width: 14),
 
@@ -589,7 +621,9 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                                       ),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: const Color(0xFF0D6BF5).withValues(alpha: 0.35),
+                                          color: const Color(
+                                            0xFF0D6BF5,
+                                          ).withValues(alpha: 0.35),
                                           blurRadius: 14,
                                           offset: const Offset(0, 5),
                                         ),
@@ -651,9 +685,7 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: isSelected
-              ? AppColors.primaryBlue
-              : const Color(0xFFE2E8F0),
+          color: isSelected ? AppColors.primaryBlue : const Color(0xFFE2E8F0),
           width: isSelected ? 1.8 : 1.2,
         ),
       ),
@@ -703,7 +735,9 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
                         style: GoogleFonts.plusJakartaSans(
                           color: AppColors.textDark,
                           fontSize: 14.5,
-                          fontWeight: isSelected ? FontWeight.w800 : FontWeight.w700,
+                          fontWeight: isSelected
+                              ? FontWeight.w800
+                              : FontWeight.w700,
                         ),
                       ),
                     ),
@@ -767,10 +801,7 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(
-          color: const Color(0xFFE2E8F0),
-          width: 1.2,
-        ),
+        border: Border.all(color: const Color(0xFFE2E8F0), width: 1.2),
       ),
       child: Material(
         color: Colors.transparent,
@@ -787,4 +818,3 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
     );
   }
 }
-

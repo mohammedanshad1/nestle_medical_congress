@@ -56,14 +56,13 @@ class NameTagScreen extends StatelessWidget {
             SafeArea(
               child: Column(
                 children: [
-                  // App Bar (Back Button + "My Name Tag" Title + Print Action)
+                  // App Bar (Back Button + Title aligned left + Print Action pushed right)
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
                       vertical: 8,
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Back Button
                         Material(
@@ -95,7 +94,9 @@ class NameTagScreen extends StatelessWidget {
                           ),
                         ),
 
-                        // Title
+                        const SizedBox(width: 16),
+
+                        // Title (Now on the left)
                         Text(
                           'My Name Tag',
                           style: GoogleFonts.plusJakartaSans(
@@ -105,6 +106,9 @@ class NameTagScreen extends StatelessWidget {
                             letterSpacing: -0.3,
                           ),
                         ),
+
+                        // Spacer to push the print button to the right
+                        const Spacer(),
 
                         // Print / Export Button
                         Material(

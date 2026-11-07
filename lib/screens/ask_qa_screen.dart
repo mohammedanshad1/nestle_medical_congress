@@ -37,7 +37,8 @@ class AskQAScreen extends StatefulWidget {
 }
 
 class _AskQAScreenState extends State<AskQAScreen> {
-  final TextEditingController _questionInputController = TextEditingController();
+  final TextEditingController _questionInputController =
+      TextEditingController();
   String _selectedCategory = 'General';
   String _activeTab = 'Recent'; // 'Popular', 'Recent', 'Answered'
 
@@ -147,9 +148,7 @@ class _AskQAScreenState extends State<AskQAScreen> {
         ),
         backgroundColor: AppColors.primaryBlue,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
   }
@@ -307,9 +306,7 @@ class _AskQAScreenState extends State<AskQAScreen> {
 
             // Background Curves Pattern
             Positioned.fill(
-              child: CustomPaint(
-                painter: BackgroundPatternPainter(),
-              ),
+              child: CustomPaint(painter: BackgroundPatternPainter()),
             ),
 
             // Main Content Area
@@ -317,11 +314,13 @@ class _AskQAScreenState extends State<AskQAScreen> {
               bottom: false,
               child: Column(
                 children: [
-                  // App Bar (Back Button + "Ask Q&A" Title + Comment Action)
+                  // App Bar (Back Button + Title aligned left + Comment Action pushed right)
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.responsiveHorizontalPadding,
+                      vertical: 8,
+                    ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Back Button
                         Material(
@@ -333,10 +332,14 @@ class _AskQAScreenState extends State<AskQAScreen> {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
@@ -349,7 +352,9 @@ class _AskQAScreenState extends State<AskQAScreen> {
                           ),
                         ),
 
-                        // Title
+                        const SizedBox(width: 16),
+
+                        // Title (Now on the left)
                         Text(
                           'Ask Q&A',
                           style: GoogleFonts.plusJakartaSans(
@@ -359,6 +364,9 @@ class _AskQAScreenState extends State<AskQAScreen> {
                             letterSpacing: -0.3,
                           ),
                         ),
+
+                        // Spacer to push the chat action to the right
+                        const Spacer(),
 
                         // Chat Action Icon
                         Material(
@@ -370,7 +378,9 @@ class _AskQAScreenState extends State<AskQAScreen> {
                                 SnackBar(
                                   content: Text(
                                     'Viewing all Q&A threads...',
-                                    style: GoogleFonts.plusJakartaSans(fontWeight: FontWeight.w600),
+                                    style: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                   backgroundColor: AppColors.primaryBlue,
                                   behavior: SnackBarBehavior.floating,
@@ -382,10 +392,14 @@ class _AskQAScreenState extends State<AskQAScreen> {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
@@ -403,7 +417,10 @@ class _AskQAScreenState extends State<AskQAScreen> {
 
                   // Hero Banner Card: "Ask the Experts"
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.responsiveHorizontalPadding,
+                      vertical: 8,
+                    ),
                     child: Container(
                       padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
@@ -439,14 +456,13 @@ class _AskQAScreenState extends State<AskQAScreen> {
                               gradient: const LinearGradient(
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
-                                colors: [
-                                  Color(0xFF38BDF8),
-                                  Color(0xFF0D6BF5),
-                                ],
+                                colors: [Color(0xFF38BDF8), Color(0xFF0D6BF5)],
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFF0D6BF5).withValues(alpha: 0.35),
+                                  color: const Color(
+                                    0xFF0D6BF5,
+                                  ).withValues(alpha: 0.35),
                                   blurRadius: 12,
                                   offset: const Offset(0, 4),
                                 ),
@@ -546,10 +562,7 @@ class _AskQAScreenState extends State<AskQAScreen> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(26),
-        border: Border.all(
-          color: const Color(0xFFE2E8F0),
-          width: 1.2,
-        ),
+        border: Border.all(color: const Color(0xFFE2E8F0), width: 1.2),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.04),
@@ -577,10 +590,7 @@ class _AskQAScreenState extends State<AskQAScreen> {
             decoration: BoxDecoration(
               color: const Color(0xFFF8FAFC),
               borderRadius: BorderRadius.circular(18),
-              border: Border.all(
-                color: const Color(0xFFE2E8F0),
-                width: 1.0,
-              ),
+              border: Border.all(color: const Color(0xFFE2E8F0), width: 1.0),
             ),
             child: TextField(
               controller: _questionInputController,
@@ -623,7 +633,10 @@ class _AskQAScreenState extends State<AskQAScreen> {
                     });
                   },
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 7,
+                    ),
                     decoration: BoxDecoration(
                       color: isSelected ? AppColors.primaryBlue : Colors.white,
                       borderRadius: BorderRadius.circular(18),
@@ -638,9 +651,13 @@ class _AskQAScreenState extends State<AskQAScreen> {
                       child: Text(
                         category,
                         style: GoogleFonts.plusJakartaSans(
-                          color: isSelected ? Colors.white : const Color(0xFF64748B),
+                          color: isSelected
+                              ? Colors.white
+                              : const Color(0xFF64748B),
                           fontSize: 12.5,
-                          fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
+                          fontWeight: isSelected
+                              ? FontWeight.w700
+                              : FontWeight.w600,
                         ),
                       ),
                     ),
@@ -660,10 +677,7 @@ class _AskQAScreenState extends State<AskQAScreen> {
               gradient: const LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
-                colors: [
-                  Color(0xFF38BDF8),
-                  Color(0xFF0D6BF5),
-                ],
+                colors: [Color(0xFF38BDF8), Color(0xFF0D6BF5)],
               ),
               boxShadow: [
                 BoxShadow(
@@ -746,7 +760,9 @@ class _AskQAScreenState extends State<AskQAScreen> {
                 child: Text(
                   tab,
                   style: GoogleFonts.plusJakartaSans(
-                    color: isSelected ? AppColors.textDark : const Color(0xFF64748B),
+                    color: isSelected
+                        ? AppColors.textDark
+                        : const Color(0xFF64748B),
                     fontSize: 13,
                     fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
                   ),
@@ -960,4 +976,3 @@ class _AskQAScreenState extends State<AskQAScreen> {
     );
   }
 }
-

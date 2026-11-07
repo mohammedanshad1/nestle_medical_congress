@@ -311,14 +311,13 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
               bottom: false,
               child: Column(
                 children: [
-                  // App Bar (Back Button + "Speakers" Title + Star Favorites Toggle)
+                  // App Bar (Back Button + Title aligned left + Star Toggle pushed right)
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: context.responsiveHorizontalPadding,
                       vertical: 8,
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Back Button
                         Material(
@@ -350,7 +349,9 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
                           ),
                         ),
 
-                        // Title
+                        const SizedBox(width: 16),
+
+                        // Title (Now on the left)
                         Text(
                           'Speakers',
                           style: GoogleFonts.plusJakartaSans(
@@ -360,6 +361,9 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
                             letterSpacing: -0.3,
                           ),
                         ),
+
+                        // Spacer to push the favorites toggle to the right
+                        const Spacer(),
 
                         // Favorites Filter Button
                         Material(

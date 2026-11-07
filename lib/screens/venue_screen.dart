@@ -10,10 +10,7 @@ class VenueFacilityItem {
   final String title;
   final IconData icon;
 
-  const VenueFacilityItem({
-    required this.title,
-    required this.icon,
-  });
+  const VenueFacilityItem({required this.title, required this.icon});
 }
 
 class VenueScreen extends StatelessWidget {
@@ -29,22 +26,10 @@ class VenueScreen extends StatelessWidget {
   });
 
   final List<VenueFacilityItem> _facilities = const [
-    VenueFacilityItem(
-      title: 'Free Wi-Fi',
-      icon: Icons.wifi_rounded,
-    ),
-    VenueFacilityItem(
-      title: 'Parking',
-      icon: Icons.local_parking_rounded,
-    ),
-    VenueFacilityItem(
-      title: 'Catering',
-      icon: Icons.restaurant_rounded,
-    ),
-    VenueFacilityItem(
-      title: 'Accessible',
-      icon: Icons.accessible_rounded,
-    ),
+    VenueFacilityItem(title: 'Free Wi-Fi', icon: Icons.wifi_rounded),
+    VenueFacilityItem(title: 'Parking', icon: Icons.local_parking_rounded),
+    VenueFacilityItem(title: 'Catering', icon: Icons.restaurant_rounded),
+    VenueFacilityItem(title: 'Accessible', icon: Icons.accessible_rounded),
   ];
 
   void _showNotice(BuildContext context, String message) {
@@ -56,9 +41,7 @@ class VenueScreen extends StatelessWidget {
         ),
         backgroundColor: AppColors.primaryBlue,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         duration: const Duration(seconds: 1),
       ),
     );
@@ -91,20 +74,20 @@ class VenueScreen extends StatelessWidget {
 
             // Background Organic Waves
             Positioned.fill(
-              child: CustomPaint(
-                painter: BackgroundPatternPainter(),
-              ),
+              child: CustomPaint(painter: BackgroundPatternPainter()),
             ),
 
             // Scrollable Content
             SafeArea(
               child: Column(
                 children: [
-                  // App Bar (Back Button + "Venue" Title + Direction Action)
+                  // App Bar (Back Button + Title aligned left + Direction Action pushed right)
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 8,
+                    ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Back Button
                         Material(
@@ -116,10 +99,14 @@ class VenueScreen extends StatelessWidget {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
@@ -132,7 +119,9 @@ class VenueScreen extends StatelessWidget {
                           ),
                         ),
 
-                        // Title
+                        const SizedBox(width: 16),
+
+                        // Title (Now on the left)
                         Text(
                           'Venue',
                           style: GoogleFonts.plusJakartaSans(
@@ -143,20 +132,30 @@ class VenueScreen extends StatelessWidget {
                           ),
                         ),
 
+                        // Spacer to push the direction action to the right
+                        const Spacer(),
+
                         // Direction / Navigation Action
                         Material(
                           color: Colors.transparent,
                           child: InkWell(
                             borderRadius: BorderRadius.circular(14),
-                            onTap: () => _showNotice(context, 'Opening map directions to venue...'),
+                            onTap: () => _showNotice(
+                              context,
+                              'Opening map directions to venue...',
+                            ),
                             child: Container(
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
@@ -183,7 +182,10 @@ class VenueScreen extends StatelessWidget {
                       child: Center(
                         child: ConstrainedBox(
                           constraints: BoxConstraints(
-                            maxWidth: context.responsiveValue(mobile: 440.0, tablet: 620.0),
+                            maxWidth: context.responsiveValue(
+                              mobile: 440.0,
+                              tablet: 620.0,
+                            ),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -196,18 +198,26 @@ class VenueScreen extends StatelessWidget {
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
                                     colors: [
-                                      const Color(0xFF102A58).withValues(alpha: 0.78),
-                                      const Color(0xFF0C2044).withValues(alpha: 0.84),
+                                      const Color(
+                                        0xFF102A58,
+                                      ).withValues(alpha: 0.78),
+                                      const Color(
+                                        0xFF0C2044,
+                                      ).withValues(alpha: 0.84),
                                     ],
                                   ),
                                   borderRadius: BorderRadius.circular(24),
                                   border: Border.all(
-                                    color: const Color(0xFF1E4685).withValues(alpha: 0.8),
+                                    color: const Color(
+                                      0xFF1E4685,
+                                    ).withValues(alpha: 0.8),
                                     width: 1.2,
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black.withValues(alpha: 0.22),
+                                      color: Colors.black.withValues(
+                                        alpha: 0.22,
+                                      ),
                                       blurRadius: 18,
                                       offset: const Offset(0, 6),
                                     ),
@@ -259,7 +269,9 @@ class VenueScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(26),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black.withValues(alpha: 0.12),
+                                      color: Colors.black.withValues(
+                                        alpha: 0.12,
+                                      ),
                                       blurRadius: 16,
                                       offset: const Offset(0, 4),
                                     ),
@@ -286,7 +298,8 @@ class VenueScreen extends StatelessWidget {
                                     // Address Details
                                     Expanded(
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             'Venue Address',
@@ -317,12 +330,18 @@ class VenueScreen extends StatelessWidget {
 
                               // Card 2: Map Preview Card
                               Container(
-                                height: context.responsiveValue(mobile: 200.0, smallPhone: 160.0, tablet: 260.0),
+                                height: context.responsiveValue(
+                                  mobile: 200.0,
+                                  smallPhone: 160.0,
+                                  tablet: 260.0,
+                                ),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(26),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black.withValues(alpha: 0.14),
+                                      color: Colors.black.withValues(
+                                        alpha: 0.14,
+                                      ),
                                       blurRadius: 16,
                                       offset: const Offset(0, 5),
                                     ),
@@ -350,10 +369,14 @@ class VenueScreen extends StatelessWidget {
                                           ),
                                           decoration: BoxDecoration(
                                             color: Colors.white,
-                                            borderRadius: BorderRadius.circular(14),
+                                            borderRadius: BorderRadius.circular(
+                                              14,
+                                            ),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Colors.black.withValues(alpha: 0.08),
+                                                color: Colors.black.withValues(
+                                                  alpha: 0.08,
+                                                ),
                                                 blurRadius: 8,
                                                 offset: const Offset(0, 2),
                                               ),
@@ -381,7 +404,9 @@ class VenueScreen extends StatelessWidget {
                                               height: 56,
                                               decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
-                                                color: const Color(0xFFFDE68A).withValues(alpha: 0.85),
+                                                color: const Color(
+                                                  0xFFFDE68A,
+                                                ).withValues(alpha: 0.85),
                                               ),
                                             ),
                                             // Location Pin
@@ -399,7 +424,9 @@ class VenueScreen extends StatelessWidget {
                                         child: Material(
                                           color: Colors.transparent,
                                           child: InkWell(
-                                            borderRadius: BorderRadius.circular(26),
+                                            borderRadius: BorderRadius.circular(
+                                              26,
+                                            ),
                                             onTap: () => _showNotice(
                                               context,
                                               'Opening interactive venue map...',
@@ -422,7 +449,9 @@ class VenueScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(26),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black.withValues(alpha: 0.12),
+                                      color: Colors.black.withValues(
+                                        alpha: 0.12,
+                                      ),
                                       blurRadius: 16,
                                       offset: const Offset(0, 4),
                                     ),
@@ -445,17 +474,37 @@ class VenueScreen extends StatelessWidget {
                                     // 2x2 Facilities Grid
                                     Row(
                                       children: [
-                                        Expanded(child: _buildFacilityCard(context, _facilities[0])),
+                                        Expanded(
+                                          child: _buildFacilityCard(
+                                            context,
+                                            _facilities[0],
+                                          ),
+                                        ),
                                         const SizedBox(width: 12),
-                                        Expanded(child: _buildFacilityCard(context, _facilities[1])),
+                                        Expanded(
+                                          child: _buildFacilityCard(
+                                            context,
+                                            _facilities[1],
+                                          ),
+                                        ),
                                       ],
                                     ),
                                     const SizedBox(height: 12),
                                     Row(
                                       children: [
-                                        Expanded(child: _buildFacilityCard(context, _facilities[2])),
+                                        Expanded(
+                                          child: _buildFacilityCard(
+                                            context,
+                                            _facilities[2],
+                                          ),
+                                        ),
                                         const SizedBox(width: 12),
-                                        Expanded(child: _buildFacilityCard(context, _facilities[3])),
+                                        Expanded(
+                                          child: _buildFacilityCard(
+                                            context,
+                                            _facilities[3],
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -483,10 +532,7 @@ class VenueScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: const Color(0xFFF8FAFC),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: const Color(0xFFE2E8F0),
-          width: 1.0,
-        ),
+        border: Border.all(color: const Color(0xFFE2E8F0), width: 1.0),
       ),
       child: Material(
         color: Colors.transparent,
@@ -497,11 +543,7 @@ class VenueScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
             child: Row(
               children: [
-                Icon(
-                  facility.icon,
-                  color: AppColors.primaryBlue,
-                  size: 20,
-                ),
+                Icon(facility.icon, color: AppColors.primaryBlue, size: 20),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Text(
@@ -523,4 +565,3 @@ class VenueScreen extends StatelessWidget {
     );
   }
 }
-

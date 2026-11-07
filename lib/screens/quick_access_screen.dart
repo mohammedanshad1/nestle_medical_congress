@@ -217,14 +217,13 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
               bottom: false,
               child: Column(
                 children: [
-                  // App Bar (Back Button + "Quick Access" Title + Grid Toggle)
+                  // App Bar (Back Button + Title aligned left + Grid Toggle pushed right)
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
                       vertical: 10,
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Back Button
                         Material(
@@ -256,7 +255,9 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
                           ),
                         ),
 
-                        // Title
+                        const SizedBox(width: 16),
+
+                        // Title (Now on the left)
                         Text(
                           'Quick Access',
                           style: GoogleFonts.plusJakartaSans(
@@ -266,6 +267,9 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
                             letterSpacing: -0.3,
                           ),
                         ),
+
+                        // Spacer to push the toggle icon to the right
+                        const Spacer(),
 
                         // Grid / List View Toggle Button
                         Material(
