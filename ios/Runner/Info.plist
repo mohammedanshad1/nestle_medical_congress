@@ -66,5 +66,54 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+
+	<!-- Camera & QR Code Scanner Permission -->
+	<key>NSCameraUsageDescription</key>
+	<string>Nestlé Medical Congress requires camera access to scan attendee badge QR codes and upload profile pictures.</string>
+
+	<!-- Photo Library Permissions -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Nestlé Medical Congress requires access to your photo library to choose a profile image and save congress documents.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Nestlé Medical Congress requires permission to save digital attendee badges and participation certificates to your photos.</string>
+
+	<!-- Location Permissions for Venue & Interactive Navigation -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Nestlé Medical Congress requires location access to provide directions to the congress venue, conference halls, and nearby facilities.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Nestlé Medical Congress requires location access to provide interactive navigation to congress halls and exhibition booths.</string>
+
+	<!-- Microphone Permission for Live Q&A -->
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Nestlé Medical Congress requires microphone access for voice questions during live Q&amp;A sessions.</string>
+
+	<!-- Face ID / Biometrics for Fast Attendee Sign-In -->
+	<key>NSFaceIDUsageDescription</key>
+	<string>Nestlé Medical Congress uses Face ID for fast and secure attendee login.</string>
+
+	<!-- Calendar Permission for Congress Agenda Sessions -->
+	<key>NSCalendarsUsageDescription</key>
+	<string>Nestlé Medical Congress requires access to your calendar to add congress scientific sessions and workshops.</string>
+	<key>NSCalendarsWriteOnlyAccessUsageDescription</key>
+	<string>Nestlé Medical Congress requires permission to add schedule sessions to your calendar.</string>
+
+	<!-- Bluetooth for Indoor Beacon Navigation & Check-in -->
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Nestlé Medical Congress uses Bluetooth to detect hall beacons for indoor venue navigation and room check-in.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Nestlé Medical Congress uses Bluetooth to detect congress beacons for hall attendance.</string>
+
+	<!-- Document Sharing & Offline Files -->
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+
+	<!-- App Transport Security for Network Media & Fonts -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
