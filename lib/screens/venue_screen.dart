@@ -336,19 +336,19 @@ class VenueScreen extends StatelessWidget {
                                   tablet: 260.0,
                                 ),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(26),
+                                  borderRadius: BorderRadius.circular(28),
                                   boxShadow: [
                                     BoxShadow(
                                       color: Colors.black.withValues(
-                                        alpha: 0.14,
+                                        alpha: 0.12,
                                       ),
-                                      blurRadius: 16,
+                                      blurRadius: 18,
                                       offset: const Offset(0, 5),
                                     ),
                                   ],
                                 ),
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(26),
+                                  borderRadius: BorderRadius.circular(28),
                                   child: Stack(
                                     children: [
                                       // Map graphics canvas
@@ -364,30 +364,31 @@ class VenueScreen extends StatelessWidget {
                                         left: 14,
                                         child: Container(
                                           padding: const EdgeInsets.symmetric(
-                                            horizontal: 14,
-                                            vertical: 6,
+                                            horizontal: 16,
+                                            vertical: 7,
                                           ),
                                           decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius: BorderRadius.circular(
-                                              14,
+                                              16,
                                             ),
                                             boxShadow: [
                                               BoxShadow(
                                                 color: Colors.black.withValues(
                                                   alpha: 0.08,
                                                 ),
-                                                blurRadius: 8,
-                                                offset: const Offset(0, 2),
+                                                blurRadius: 10,
+                                                offset: const Offset(0, 3),
                                               ),
                                             ],
                                           ),
                                           child: Text(
                                             'Map Preview',
                                             style: GoogleFonts.plusJakartaSans(
-                                              color: AppColors.textDark,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700,
+                                              color: const Color(0xFF0C1D36),
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w800,
+                                              letterSpacing: -0.2,
                                             ),
                                           ),
                                         ),
@@ -398,21 +399,36 @@ class VenueScreen extends StatelessWidget {
                                         child: Stack(
                                           alignment: Alignment.center,
                                           children: [
-                                            // Golden Radar Glow
+                                            // Soft Diffused Golden Ambient Glow
                                             Container(
-                                              width: 56,
-                                              height: 56,
+                                              width: 66,
+                                              height: 66,
                                               decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
-                                                color: const Color(
-                                                  0xFFFDE68A,
-                                                ).withValues(alpha: 0.85),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: const Color(
+                                                      0xFFFDC55A,
+                                                    ).withValues(alpha: 0.45),
+                                                    blurRadius: 16,
+                                                    spreadRadius: 2,
+                                                  ),
+                                                ],
                                               ),
                                             ),
-                                            // Location Pin
+                                            // Solid Warm Pastel Gold Circle
+                                            Container(
+                                              width: 58,
+                                              height: 58,
+                                              decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Color(0xFFF7C866),
+                                              ),
+                                            ),
+                                            // Dark Navy Location Pin
                                             const Icon(
                                               Icons.location_on_rounded,
-                                              color: Color(0xFF0C1D36),
+                                              color: Color(0xFF0F2650),
                                               size: 28,
                                             ),
                                           ],

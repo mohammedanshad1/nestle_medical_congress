@@ -33,10 +33,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    );
+    _controller = AnimationController(vsync: this, duration: widget.duration);
 
     _fadeAnimation = CurvedAnimation(
       parent: _controller,
@@ -196,9 +193,7 @@ class _SplashScreenState extends State<SplashScreen>
 
               // Subtle Background Dot Grid & Waves
               Positioned.fill(
-                child: CustomPaint(
-                  painter: BackgroundPatternPainter(),
-                ),
+                child: CustomPaint(painter: BackgroundPatternPainter()),
               ),
 
               // Foreground Animated Content
@@ -240,12 +235,16 @@ class _SplashScreenState extends State<SplashScreen>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  SizedBox(height: isSmall || isLandscape ? 8 : 24),
+                                  SizedBox(
+                                    height: isSmall || isLandscape ? 8 : 24,
+                                  ),
 
                                   // Central Crest Emblem
                                   _buildCentralEmblem(emblemSize),
 
-                                  SizedBox(height: isSmall || isLandscape ? 16 : 28),
+                                  SizedBox(
+                                    height: isSmall || isLandscape ? 16 : 28,
+                                  ),
 
                                   // Golden Overline with Diamonds
                                   Row(
@@ -289,7 +288,9 @@ class _SplashScreenState extends State<SplashScreen>
                                       letterSpacing: -0.5,
                                       shadows: [
                                         BoxShadow(
-                                          color: Colors.black.withValues(alpha: 0.4),
+                                          color: Colors.black.withValues(
+                                            alpha: 0.4,
+                                          ),
                                           blurRadius: 16,
                                           offset: const Offset(0, 4),
                                         ),
@@ -315,8 +316,9 @@ class _SplashScreenState extends State<SplashScreen>
                                       borderRadius: BorderRadius.circular(20),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: const Color(0xFFFDC55A)
-                                              .withValues(alpha: 0.35),
+                                          color: const Color(
+                                            0xFFFDC55A,
+                                          ).withValues(alpha: 0.35),
                                           blurRadius: 10,
                                           offset: const Offset(0, 3),
                                         ),
@@ -333,7 +335,9 @@ class _SplashScreenState extends State<SplashScreen>
                                     ),
                                   ),
 
-                                  SizedBox(height: isSmall || isLandscape ? 10 : 16),
+                                  SizedBox(
+                                    height: isSmall || isLandscape ? 10 : 16,
+                                  ),
 
                                   // Theme Tagline
                                   Text(
@@ -347,7 +351,9 @@ class _SplashScreenState extends State<SplashScreen>
                                     ),
                                   ),
 
-                                  SizedBox(height: isSmall || isLandscape ? 12 : 20),
+                                  SizedBox(
+                                    height: isSmall || isLandscape ? 12 : 20,
+                                  ),
 
                                   // Venue & Date Frosted Capsule
                                   Container(
@@ -356,12 +362,14 @@ class _SplashScreenState extends State<SplashScreen>
                                       vertical: isSmall ? 6 : 8,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFF0F2650)
-                                          .withValues(alpha: 0.65),
+                                      color: const Color(
+                                        0xFF0F2650,
+                                      ).withValues(alpha: 0.65),
                                       borderRadius: BorderRadius.circular(24),
                                       border: Border.all(
-                                        color: const Color(0xFF1E4380)
-                                            .withValues(alpha: 0.7),
+                                        color: const Color(
+                                          0xFF1E4380,
+                                        ).withValues(alpha: 0.7),
                                         width: 1,
                                       ),
                                     ),
@@ -375,7 +383,7 @@ class _SplashScreenState extends State<SplashScreen>
                                         ),
                                         const SizedBox(width: 6),
                                         Text(
-                                          'Vienna • May 22–24, 2026',
+                                          'Vienna • May 22–23, 2026',
                                           style: GoogleFonts.plusJakartaSans(
                                             color: const Color(0xFFE2E8F0),
                                             fontSize: isSmall ? 11.5 : 12.5,
@@ -386,7 +394,9 @@ class _SplashScreenState extends State<SplashScreen>
                                     ),
                                   ),
 
-                                  SizedBox(height: isSmall || isLandscape ? 16 : 30),
+                                  SizedBox(
+                                    height: isSmall || isLandscape ? 16 : 30,
+                                  ),
 
                                   // Animated Progress Bar
                                   SizedBox(
@@ -403,7 +413,10 @@ class _SplashScreenState extends State<SplashScreen>
                                           // Animated Fill
                                           FractionallySizedBox(
                                             alignment: Alignment.centerLeft,
-                                            widthFactor: progress.clamp(0.0, 1.0),
+                                            widthFactor: progress.clamp(
+                                              0.0,
+                                              1.0,
+                                            ),
                                             child: Container(
                                               decoration: const BoxDecoration(
                                                 gradient: LinearGradient(
@@ -433,7 +446,9 @@ class _SplashScreenState extends State<SplashScreen>
                                     ),
                                   ),
 
-                                  SizedBox(height: isSmall || isLandscape ? 12 : 20),
+                                  SizedBox(
+                                    height: isSmall || isLandscape ? 12 : 20,
+                                  ),
 
                                   // Skip / Tap to continue hint
                                   Text(
@@ -446,7 +461,9 @@ class _SplashScreenState extends State<SplashScreen>
                                     ),
                                   ),
 
-                                  SizedBox(height: isSmall || isLandscape ? 8 : 16),
+                                  SizedBox(
+                                    height: isSmall || isLandscape ? 8 : 16,
+                                  ),
                                 ],
                               ),
                             ),
@@ -528,10 +545,7 @@ class _SplashScreenState extends State<SplashScreen>
               gradient: const LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [
-                  Color(0xFF163772),
-                  Color(0xFF0B1F45),
-                ],
+                colors: [Color(0xFF163772), Color(0xFF0B1F45)],
               ),
               borderRadius: BorderRadius.circular(26 * scale),
               border: Border.all(
@@ -584,4 +598,3 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 }
-

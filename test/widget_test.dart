@@ -354,7 +354,7 @@ void main() {
     expect(find.text('NESTLÉ MEDICAL\nCONGRESS'), findsOneWidget);
     expect(find.text('ANNUAL GLOBAL EDITION 2026'), findsOneWidget);
     expect(find.text('The Next Era of Nutrition & Health'), findsOneWidget);
-    expect(find.text('Vienna • May 22–24, 2026'), findsOneWidget);
+    expect(find.text('Vienna • May 22–23, 2026'), findsOneWidget);
     expect(find.text('Tap anywhere to continue →'), findsOneWidget);
   });
 

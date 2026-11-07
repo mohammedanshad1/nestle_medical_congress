@@ -810,8 +810,10 @@ class _LiveVotingScreenState extends State<LiveVotingScreen> {
           onTap: onTap,
           child: Icon(
             icon,
-            color: isEnabled ? AppColors.textDark : const Color(0xFFCBD5E1),
-            size: 20,
+            color: isEnabled
+                ? const Color(0xFF3147A6) // <--- CHANGED COLOR TO 3147A6
+                : const Color(0xFFCBD5E1),
+            size: 24,
           ),
         ),
       ),

@@ -6,60 +6,57 @@ class MapPreviewPainter extends CustomPainter {
     final double w = size.width;
     final double h = size.height;
 
-    // 1. Soft map background
+    // 1. Clean pastel ice-blue map terrain background matching screen 8
     final Paint bgPaint = Paint()
-      ..shader = const LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [Color(0xFFE2F1FC), Color(0xFFEBF7FF), Color(0xFFD9ECFB)],
-      ).createShader(Rect.fromLTWH(0, 0, w, h));
+      ..color = const Color(0xFFE5EEF9)
+      ..style = PaintingStyle.fill;
 
     final RRect mapRRect = RRect.fromRectAndRadius(
       Rect.fromLTWH(0, 0, w, h),
-      const Radius.circular(26),
+      const Radius.circular(28),
     );
     canvas.drawRRect(mapRRect, bgPaint);
 
-    // Clip to rounded container
+    // Clip to rounded card corners
     canvas.save();
     canvas.clipRRect(mapRRect);
 
-    // 2. Map road/route vector lines
-    final Paint roadPaint = Paint()
-      ..color = Colors.white.withValues(alpha: 0.85)
+    // 2. Map road/route vector lines (Pure white smooth bezier curves)
+    final Paint primaryRoadPaint = Paint()
+      ..color = Colors.white
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 6.0
+      ..strokeWidth = 7.5
       ..strokeCap = StrokeCap.round;
 
     final Paint minorRoadPaint = Paint()
-      ..color = Colors.white.withValues(alpha: 0.55)
+      ..color = Colors.white
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 3.0;
+      ..strokeWidth = 4.0
+      ..strokeCap = StrokeCap.round;
 
-    // Curved primary road 1
-    final Path road1 = Path();
-    road1.moveTo(0, h * 0.65);
-    road1.cubicTo(w * 0.35, h * 0.60, w * 0.60, h * 0.35, w * 0.75, 0);
-    canvas.drawPath(road1, roadPaint);
+    // Primary horizontal road passing across the middle (under the pin)
+    final Path mainRoad = Path();
+    mainRoad.moveTo(0, h * 0.68);
+    mainRoad.cubicTo(w * 0.35, h * 0.60, w * 0.65, h * 0.52, w, h * 0.58);
+    canvas.drawPath(mainRoad, primaryRoadPaint);
 
-    // Curved primary road 2
-    final Path road2 = Path();
-    road2.moveTo(w * 0.25, h);
-    road2.cubicTo(w * 0.38, h * 0.55, w * 0.65, h * 0.50, w, h * 0.58);
-    canvas.drawPath(road2, roadPaint);
+    // Left prominent curved avenue (clearly visible to the right of the "Map Preview" pill)
+    final Path leftAvenue = Path();
+    leftAvenue.moveTo(w * 0.18, 0);
+    leftAvenue.cubicTo(w * 0.28, h * 0.28, w * 0.32, h * 0.52, w * 0.28, h);
+    canvas.drawPath(leftAvenue, minorRoadPaint);
 
-    // Curved intersecting route 3
-    final Path road3 = Path();
-    road3.moveTo(0, h * 0.25);
-    road3.cubicTo(w * 0.45, h * 0.35, w * 0.55, h * 0.75, w * 0.85, h);
-    canvas.drawPath(road3, minorRoadPaint);
+    // Far left top corner curve
+    final Path leftTopCorner = Path();
+    leftTopCorner.moveTo(0, h * 0.12);
+    leftTopCorner.cubicTo(w * 0.05, h * 0.06, w * 0.09, 0, w * 0.12, 0);
+    canvas.drawPath(leftTopCorner, minorRoadPaint);
 
-    // Circular route ring around the center
-    final Paint ringPaint = Paint()
-      ..color = Colors.white.withValues(alpha: 0.45)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 3.5;
-    canvas.drawCircle(Offset(w * 0.5, h * 0.56), w * 0.36, ringPaint);
+    // Right curved vertical bypass looping past the pin
+    final Path rightRoad = Path();
+    rightRoad.moveTo(w * 0.67, 0);
+    rightRoad.cubicTo(w * 0.65, h * 0.38, w * 0.70, h * 0.75, w * 0.84, h);
+    canvas.drawPath(rightRoad, minorRoadPaint);
 
     canvas.restore();
   }

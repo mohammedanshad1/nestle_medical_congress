@@ -19,7 +19,7 @@ class AppColors {
 
   // Card & Text colors
   static const Color cardBackground = Colors.white;
-  static const Color textDark = Color(0xFF0C1D36);
+  static const Color textDark = Color(0xFF182863);
   static const Color textMuted = Color(0xFF6B7280);
   static const Color textPlaceholder = Color(0xFF94A3B8);
   static const Color inputBorder = Color(0xFFE2E8F0);
@@ -31,4 +31,3 @@ class AppColors {
   static const Color highlightsIconBg = Color(0xFF0F2E5E);
   static const Color highlightsIcon = Color(0xFF38BDF8);
 }
-
