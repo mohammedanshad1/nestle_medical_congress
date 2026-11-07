@@ -711,21 +711,35 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
         ),
       );
     } else {
-      // Standard blue border ring
+      // Custom SweepGradient ring with the requested colors
       avatar = Container(
         width: 58,
         height: 58,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(color: const Color(0xFF2563EB), width: 2.2),
+          gradient: SweepGradient(
+            colors: [
+              Color(0xFF60BFEB),
+              Color(0xFF4A6DC7),
+              Color(0xFF3A68C5),
+              Color(0xFF60BFEB),
+            ],
+          ),
         ),
-        child: Center(
-          child: Text(
-            speaker.initials,
-            style: GoogleFonts.plusJakartaSans(
-              color: const Color(0xFF1D4ED8),
-              fontSize: 19,
-              fontWeight: FontWeight.w800,
+        padding: const EdgeInsets.all(2.5),
+        child: Container(
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.white,
+          ),
+          child: Center(
+            child: Text(
+              speaker.initials,
+              style: GoogleFonts.plusJakartaSans(
+                color: const Color(0xFF1D4ED8),
+                fontSize: 19,
+                fontWeight: FontWeight.w800,
+              ),
             ),
           ),
         ),
