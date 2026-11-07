@@ -679,6 +679,59 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
   Widget _buildSpeakerCard(SpeakerModel speaker) {
     final isFavorite = _favoriteSpeakerIds.contains(speaker.id);
 
+    // Determine the avatar decoration
+    Widget avatar;
+    if (speaker.isFeatured) {
+      // Dual-tone SweepGradient ring (same as Profile screen)
+      avatar = Container(
+        width: 58,
+        height: 58,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: SweepGradient(
+            colors: [Color(0xFFFDC55A), Color(0xFF38BDF8), Color(0xFFFDC55A)],
+          ),
+        ),
+        padding: const EdgeInsets.all(2.5),
+        child: Container(
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.white,
+          ),
+          child: Center(
+            child: Text(
+              speaker.initials,
+              style: GoogleFonts.plusJakartaSans(
+                color: AppColors.primaryBlue,
+                fontSize: 19,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+          ),
+        ),
+      );
+    } else {
+      // Standard blue border ring
+      avatar = Container(
+        width: 58,
+        height: 58,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(color: const Color(0xFF2563EB), width: 2.2),
+        ),
+        child: Center(
+          child: Text(
+            speaker.initials,
+            style: GoogleFonts.plusJakartaSans(
+              color: const Color(0xFF1D4ED8),
+              fontSize: 19,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ),
+      );
+    }
+
     return Container(
       margin: const EdgeInsets.only(bottom: 14),
       decoration: BoxDecoration(
@@ -708,32 +761,7 @@ class _SpeakersScreenState extends State<SpeakersScreen> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Avatar with Circular Gradient or Blue Ring
-                Container(
-                  width: 58,
-                  height: 58,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: speaker.isFeatured
-                          ? const Color(0xFF38BDF8)
-                          : const Color(0xFF2563EB),
-                      width: 2.2,
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      speaker.initials,
-                      style: GoogleFonts.plusJakartaSans(
-                        color: speaker.isFeatured
-                            ? AppColors.primaryBlue
-                            : const Color(0xFF1D4ED8),
-                        fontSize: 19,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  ),
-                ),
+                avatar,
                 const SizedBox(width: 14),
 
                 // Middle Info Column

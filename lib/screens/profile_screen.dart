@@ -33,12 +33,12 @@ class ProfileScreen extends StatelessWidget {
             child: CustomPaint(painter: BackgroundPatternPainter()),
           ),
           SafeArea(
+            bottom: false, // Let the content extend behind the bottom nav
             child: Center(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
-                padding: EdgeInsets.symmetric(
-                  horizontal: context.responsiveHorizontalPadding,
-                  vertical: context.responsiveVerticalPadding,
+                padding: EdgeInsets.only(
+                  top: context.responsiveVerticalPadding,
                 ),
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
@@ -47,73 +47,77 @@ class ProfileScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       // Header (Back Button + Title aligned left + Settings pushed right)
-                      Row(
-                        children: [
-                          // Back Button
-                          Container(
-                            width: 42,
-                            height: 42,
-                            decoration: BoxDecoration(
-                              color: const Color(
-                                0xFF0F2650,
-                              ).withValues(alpha: 0.65),
-                              borderRadius: BorderRadius.circular(14),
-                              border: Border.all(
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: context.responsiveHorizontalPadding,
+                        ),
+                        child: Row(
+                          children: [
+                            // Back Button
+                            Container(
+                              width: 42,
+                              height: 42,
+                              decoration: BoxDecoration(
                                 color: const Color(
-                                  0xFF1E4380,
-                                ).withValues(alpha: 0.6),
-                                width: 1,
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
+                                borderRadius: BorderRadius.circular(14),
+                                border: Border.all(
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
+                                  width: 1,
+                                ),
+                              ),
+                              child: const Icon(
+                                Icons.arrow_back_ios_new_rounded,
+                                color: Colors.white,
+                                size: 18,
                               ),
                             ),
-                            child: const Icon(
-                              Icons.arrow_back_ios_new_rounded,
-                              color: Colors.white,
-                              size: 18,
-                            ),
-                          ),
 
-                          const SizedBox(width: 16),
+                            const SizedBox(width: 16),
 
-                          // Title (Now on the left)
-                          Text(
-                            'My Profile',
-                            style: GoogleFonts.plusJakartaSans(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w800,
-                            ),
-                          ),
-
-                          // Spacer to push settings icon to the right
-                          const Spacer(),
-
-                          // Settings Icon
-                          Container(
-                            width: 42,
-                            height: 42,
-                            decoration: BoxDecoration(
-                              color: const Color(
-                                0xFF0F2650,
-                              ).withValues(alpha: 0.65),
-                              borderRadius: BorderRadius.circular(14),
-                              border: Border.all(
-                                color: const Color(
-                                  0xFF1E4380,
-                                ).withValues(alpha: 0.6),
-                                width: 1,
+                            // Title
+                            Text(
+                              'My Profile',
+                              style: GoogleFonts.plusJakartaSans(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w800,
                               ),
                             ),
-                            child: const Icon(
-                              Icons.settings_outlined,
-                              color: Colors.white,
-                              size: 20,
+
+                            const Spacer(),
+
+                            // Settings Icon
+                            Container(
+                              width: 42,
+                              height: 42,
+                              decoration: BoxDecoration(
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
+                                borderRadius: BorderRadius.circular(14),
+                                border: Border.all(
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
+                                  width: 1,
+                                ),
+                              ),
+                              child: const Icon(
+                                Icons.settings_outlined,
+                                color: Colors.white,
+                                size: 20,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 24),
 
-                      // Avatar with Dual-Tone Gradient Ring
+                      // Avatar
                       Stack(
                         alignment: Alignment.bottomRight,
                         children: [
@@ -209,18 +213,20 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 22),
 
-                      // --- NEW WRAPPER CONTAINER START ---
+                      // --- MAIN CONTAINER (Now extended to bottom) ---
                       Container(
-                        padding: const EdgeInsets.all(16),
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(
+                          16,
+                          16,
+                          16,
+                          100,
+                        ), // Extra bottom padding for navbar overlap
                         decoration: const BoxDecoration(
-                          color: Color(
-                            0xFFF8FAFC,
-                          ), // Light background like the image sheet
+                          color: Color(0xFFF8FAFC),
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(32),
-                            topRight: Radius.circular(32),
-                            bottomLeft: Radius.circular(32),
-                            bottomRight: Radius.circular(32),
+                            topLeft: Radius.circular(36),
+                            topRight: Radius.circular(36),
                           ),
                         ),
                         child: Column(
@@ -300,7 +306,6 @@ class ProfileScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      // --- NEW WRAPPER CONTAINER END ---
                     ],
                   ),
                 ),
