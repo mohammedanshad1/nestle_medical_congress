@@ -47,7 +47,12 @@ class _AgendaScreenState extends State<AgendaScreen> {
   final TextEditingController _searchController = TextEditingController();
   final Set<String> _bookmarkedSessionIds = {};
 
-  final List<String> _categories = const ['All', 'Keynote', 'Nutrition', 'Research'];
+  final List<String> _categories = const [
+    'All',
+    'Keynote',
+    'Nutrition',
+    'Research',
+  ];
 
   final List<CongressSession> _allSessions = const [
     // Day 1 Sessions
@@ -183,8 +188,10 @@ class _AgendaScreenState extends State<AgendaScreen> {
     return _allSessions.where((session) {
       final matchesDay = session.day == _selectedDay;
       final matchesCategory =
-          _selectedCategory == 'All' || session.category.toLowerCase() == _selectedCategory.toLowerCase();
-      final matchesQuery = query.isEmpty ||
+          _selectedCategory == 'All' ||
+          session.category.toLowerCase() == _selectedCategory.toLowerCase();
+      final matchesQuery =
+          query.isEmpty ||
           session.title.toLowerCase().contains(query) ||
           session.locationOrSpeaker.toLowerCase().contains(query);
       return matchesDay && matchesCategory && matchesQuery;
@@ -236,9 +243,7 @@ class _AgendaScreenState extends State<AgendaScreen> {
 
             // Background Curves & Dots Pattern
             Positioned.fill(
-              child: CustomPaint(
-                painter: BackgroundPatternPainter(),
-              ),
+              child: CustomPaint(painter: BackgroundPatternPainter()),
             ),
 
             // Main Content Area
@@ -246,11 +251,13 @@ class _AgendaScreenState extends State<AgendaScreen> {
               bottom: false,
               child: Column(
                 children: [
-                  // App Bar (Back Button + "Congress Agenda" + Search Icon Button)
+                  // App Bar (Back Button + Title aligned left + Search Icon pushed right)
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 8),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.responsiveHorizontalPadding,
+                      vertical: 8,
+                    ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Back Button
                         Material(
@@ -262,10 +269,14 @@ class _AgendaScreenState extends State<AgendaScreen> {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
@@ -278,7 +289,9 @@ class _AgendaScreenState extends State<AgendaScreen> {
                           ),
                         ),
 
-                        // Title
+                        const SizedBox(width: 16),
+
+                        // Title (Now on the left)
                         Text(
                           'Congress Agenda',
                           style: GoogleFonts.plusJakartaSans(
@@ -288,6 +301,9 @@ class _AgendaScreenState extends State<AgendaScreen> {
                             letterSpacing: -0.3,
                           ),
                         ),
+
+                        // Spacer to push the search icon to the right
+                        const Spacer(),
 
                         // Search Icon Button
                         Material(
@@ -304,15 +320,21 @@ class _AgendaScreenState extends State<AgendaScreen> {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
                               child: Icon(
-                                _isSearching ? Icons.close_rounded : Icons.search_rounded,
+                                _isSearching
+                                    ? Icons.close_rounded
+                                    : Icons.search_rounded,
                                 color: Colors.white,
                                 size: 22,
                               ),
@@ -326,7 +348,10 @@ class _AgendaScreenState extends State<AgendaScreen> {
                   // Optional Inline Search Bar
                   if (_isSearching)
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 6),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.responsiveHorizontalPadding,
+                        vertical: 6,
+                      ),
                       child: Container(
                         height: 46,
                         padding: const EdgeInsets.symmetric(horizontal: 14),
@@ -340,7 +365,11 @@ class _AgendaScreenState extends State<AgendaScreen> {
                         ),
                         child: Row(
                           children: [
-                            const Icon(Icons.search_rounded, color: Color(0xFF94A3B8), size: 20),
+                            const Icon(
+                              Icons.search_rounded,
+                              color: Color(0xFF94A3B8),
+                              size: 20,
+                            ),
                             const SizedBox(width: 8),
                             Expanded(
                               child: TextField(
@@ -354,7 +383,8 @@ class _AgendaScreenState extends State<AgendaScreen> {
                                 ),
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: 'Search session title or speaker...',
+                                  hintText:
+                                      'Search session title or speaker...',
                                   hintStyle: GoogleFonts.plusJakartaSans(
                                     color: const Color(0xFF94A3B8),
                                     fontSize: 13,
@@ -369,7 +399,10 @@ class _AgendaScreenState extends State<AgendaScreen> {
 
                   // Hero Banner Card ("Day X Schedule")
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding, vertical: 6),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.responsiveHorizontalPadding,
+                      vertical: 6,
+                    ),
                     child: Container(
                       padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
@@ -405,14 +438,13 @@ class _AgendaScreenState extends State<AgendaScreen> {
                               gradient: const LinearGradient(
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
-                                colors: [
-                                  Color(0xFFFFD988),
-                                  Color(0xFFFDC55A),
-                                ],
+                                colors: [Color(0xFFFFD988), Color(0xFFFDC55A)],
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFFDC55A).withValues(alpha: 0.35),
+                                  color: const Color(
+                                    0xFFFDC55A,
+                                  ).withValues(alpha: 0.35),
                                   blurRadius: 12,
                                   offset: const Offset(0, 4),
                                 ),
@@ -432,7 +464,9 @@ class _AgendaScreenState extends State<AgendaScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  _selectedDay == 1 ? 'Day 1 Schedule' : 'Day 2 Schedule',
+                                  _selectedDay == 1
+                                      ? 'Day 1 Schedule'
+                                      : 'Day 2 Schedule',
                                   style: GoogleFonts.plusJakartaSans(
                                     color: Colors.white,
                                     fontSize: 21,
@@ -442,7 +476,9 @@ class _AgendaScreenState extends State<AgendaScreen> {
                                 ),
                                 const SizedBox(height: 5),
                                 Text(
-                                  _selectedDay == 1 ? 'Thursday, May 22, 2026' : 'Friday, May 23, 2026',
+                                  _selectedDay == 1
+                                      ? 'Thursday, May 22, 2026'
+                                      : 'Friday, May 23, 2026',
                                   style: GoogleFonts.plusJakartaSans(
                                     color: const Color(0xFFCBD5E1),
                                     fontSize: 13,
@@ -461,7 +497,9 @@ class _AgendaScreenState extends State<AgendaScreen> {
 
                   // Day Switcher Tabs (Day 1 / Day 2)
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: context.responsiveHorizontalPadding),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.responsiveHorizontalPadding,
+                    ),
                     child: Row(
                       children: [
                         // Day 1 Tab
@@ -552,12 +590,16 @@ class _AgendaScreenState extends State<AgendaScreen> {
                             height: 38,
                             child: ListView.separated(
                               scrollDirection: Axis.horizontal,
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                              ),
                               itemCount: _categories.length,
-                              separatorBuilder: (context, index) => const SizedBox(width: 10),
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(width: 10),
                               itemBuilder: (context, index) {
                                 final category = _categories[index];
-                                final isSelected = _selectedCategory == category;
+                                final isSelected =
+                                    _selectedCategory == category;
 
                                 return GestureDetector(
                                   onTap: () {
@@ -618,7 +660,12 @@ class _AgendaScreenState extends State<AgendaScreen> {
                                     ),
                                   )
                                 : ListView.builder(
-                                    padding: const EdgeInsets.fromLTRB(20, 2, 20, 24),
+                                    padding: const EdgeInsets.fromLTRB(
+                                      20,
+                                      2,
+                                      20,
+                                      24,
+                                    ),
                                     physics: const BouncingScrollPhysics(),
                                     itemCount: _filteredSessions.length,
                                     itemBuilder: (context, index) {
@@ -735,7 +782,9 @@ class _AgendaScreenState extends State<AgendaScreen> {
               SnackBar(
                 content: Text(
                   '${session.title.replaceAll('\n', ' ')} selected',
-                  style: GoogleFonts.plusJakartaSans(fontWeight: FontWeight.w600),
+                  style: GoogleFonts.plusJakartaSans(
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 backgroundColor: AppColors.primaryBlue,
                 behavior: SnackBarBehavior.floating,
@@ -867,4 +916,3 @@ class _AgendaScreenState extends State<AgendaScreen> {
     );
   }
 }
-

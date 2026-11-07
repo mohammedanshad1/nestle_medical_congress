@@ -40,7 +40,12 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
   String _selectedCategory = 'All';
   bool _isGridView = true;
 
-  final List<String> _categories = const ['All', 'Event', 'Interactive', 'Tools'];
+  final List<String> _categories = const [
+    'All',
+    'Event',
+    'Interactive',
+    'Tools',
+  ];
 
   final List<QuickAccessTool> _tools = const [
     QuickAccessTool(
@@ -110,8 +115,10 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
   List<QuickAccessTool> get _filteredTools {
     final query = _searchController.text.trim().toLowerCase();
     return _tools.where((tool) {
-      final matchesCategory = _selectedCategory == 'All' || tool.category == _selectedCategory;
-      final matchesQuery = query.isEmpty ||
+      final matchesCategory =
+          _selectedCategory == 'All' || tool.category == _selectedCategory;
+      final matchesQuery =
+          query.isEmpty ||
           tool.title.toLowerCase().contains(query) ||
           tool.description.toLowerCase().contains(query);
       return matchesCategory && matchesQuery;
@@ -120,59 +127,45 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
 
   void _onToolTap(QuickAccessTool tool) {
     if (tool.id == 'agenda') {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const AgendaScreen(),
-        ),
-      );
+      Navigator.of(
+        context,
+      ).push(MaterialPageRoute(builder: (context) => const AgendaScreen()));
       return;
     }
     if (tool.id == 'speakers') {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const SpeakersScreen(),
-        ),
-      );
+      Navigator.of(
+        context,
+      ).push(MaterialPageRoute(builder: (context) => const SpeakersScreen()));
       return;
     }
     if (tool.id == 'name_tag') {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const NameTagScreen(),
-        ),
-      );
+      Navigator.of(
+        context,
+      ).push(MaterialPageRoute(builder: (context) => const NameTagScreen()));
       return;
     }
     if (tool.id == 'venue') {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const VenueScreen(),
-        ),
-      );
+      Navigator.of(
+        context,
+      ).push(MaterialPageRoute(builder: (context) => const VenueScreen()));
       return;
     }
     if (tool.id == 'voting') {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const LiveVotingScreen(),
-        ),
-      );
+      Navigator.of(
+        context,
+      ).push(MaterialPageRoute(builder: (context) => const LiveVotingScreen()));
       return;
     }
     if (tool.id == 'ask_qa') {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const AskQAScreen(),
-        ),
-      );
+      Navigator.of(
+        context,
+      ).push(MaterialPageRoute(builder: (context) => const AskQAScreen()));
       return;
     }
     if (tool.id == 'resources') {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => const ResourcesScreen(),
-        ),
-      );
+      Navigator.of(
+        context,
+      ).push(MaterialPageRoute(builder: (context) => const ResourcesScreen()));
       return;
     }
     ScaffoldMessenger.of(context).showSnackBar(
@@ -183,9 +176,7 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
         ),
         backgroundColor: AppColors.primaryBlue,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         duration: const Duration(seconds: 1),
       ),
     );
@@ -218,9 +209,7 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
 
             // Subtle Background Waves
             Positioned.fill(
-              child: CustomPaint(
-                painter: BackgroundPatternPainter(),
-              ),
+              child: CustomPaint(painter: BackgroundPatternPainter()),
             ),
 
             // Main Content Area
@@ -230,7 +219,10 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
                 children: [
                   // App Bar (Back Button + "Quick Access" Title + Grid Toggle)
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 10,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -244,10 +236,14 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
@@ -285,15 +281,21 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
                               width: 44,
                               height: 44,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF0F2650).withValues(alpha: 0.65),
+                                color: const Color(
+                                  0xFF0F2650,
+                                ).withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(14),
                                 border: Border.all(
-                                  color: const Color(0xFF1E4380).withValues(alpha: 0.6),
+                                  color: const Color(
+                                    0xFF1E4380,
+                                  ).withValues(alpha: 0.6),
                                   width: 1,
                                 ),
                               ),
                               child: Icon(
-                                _isGridView ? Icons.grid_view_rounded : Icons.view_agenda_rounded,
+                                _isGridView
+                                    ? Icons.grid_view_rounded
+                                    : Icons.view_agenda_rounded,
                                 color: const Color(0xFFFDC55A),
                                 size: 20,
                               ),
@@ -306,7 +308,10 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
 
                   // Hero Banner Card: "Explore Congress Tools"
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 8,
+                    ),
                     child: Container(
                       padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
@@ -342,14 +347,13 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
                               gradient: const LinearGradient(
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
-                                colors: [
-                                  Color(0xFF38BDF8),
-                                  Color(0xFF0D6BF5),
-                                ],
+                                colors: [Color(0xFF38BDF8), Color(0xFF0D6BF5)],
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFF0D6BF5).withValues(alpha: 0.35),
+                                  color: const Color(
+                                    0xFF0D6BF5,
+                                  ).withValues(alpha: 0.35),
                                   blurRadius: 12,
                                   offset: const Offset(0, 4),
                                 ),
@@ -418,7 +422,9 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Container(
                               height: 50,
-                              padding: const EdgeInsets.symmetric(horizontal: 14),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 14,
+                              ),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(22),
@@ -481,12 +487,16 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
                             height: 38,
                             child: ListView.separated(
                               scrollDirection: Axis.horizontal,
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                              ),
                               itemCount: _categories.length,
-                              separatorBuilder: (context, index) => const SizedBox(width: 10),
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(width: 10),
                               itemBuilder: (context, index) {
                                 final category = _categories[index];
-                                final isSelected = _selectedCategory == category;
+                                final isSelected =
+                                    _selectedCategory == category;
 
                                 return GestureDetector(
                                   onTap: () {
@@ -547,8 +557,8 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
                                     ),
                                   )
                                 : _isGridView
-                                    ? _buildToolsGrid(_filteredTools)
-                                    : _buildToolsList(_filteredTools),
+                                ? _buildToolsGrid(_filteredTools)
+                                : _buildToolsList(_filteredTools),
                           ),
                         ],
                       ),
@@ -565,9 +575,7 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
 
   // Responsive Grid of Tools
   Widget _buildToolsGrid(List<QuickAccessTool> tools) {
-    final columns = context.screenWidth >= 900
-        ? 4
-        : (context.isTablet ? 3 : 2);
+    final columns = context.screenWidth >= 900 ? 4 : (context.isTablet ? 3 : 2);
     final aspectRatio = context.responsiveValue(
       mobile: context.screenWidth < 360 ? 0.82 : 0.88,
       tablet: 1.05,
@@ -611,10 +619,7 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(
-          color: const Color(0xFFE2E8F0),
-          width: 1.1,
-        ),
+        border: Border.all(color: const Color(0xFFE2E8F0), width: 1.1),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.04),
@@ -642,10 +647,7 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
                     gradient: const LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
-                      colors: [
-                        Color(0xFF2B8CFF),
-                        Color(0xFF0D63E5),
-                      ],
+                      colors: [Color(0xFF2B8CFF), Color(0xFF0D63E5)],
                     ),
                     boxShadow: [
                       BoxShadow(
@@ -655,11 +657,7 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
                       ),
                     ],
                   ),
-                  child: Icon(
-                    tool.icon,
-                    color: Colors.white,
-                    size: 24,
-                  ),
+                  child: Icon(tool.icon, color: Colors.white, size: 24),
                 ),
 
                 const Spacer(),
@@ -733,10 +731,7 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: const Color(0xFFE2E8F0),
-          width: 1.1,
-        ),
+        border: Border.all(color: const Color(0xFFE2E8F0), width: 1.1),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.04),
@@ -762,10 +757,7 @@ class _QuickAccessScreenState extends State<QuickAccessScreen> {
                     gradient: const LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
-                      colors: [
-                        Color(0xFF2B8CFF),
-                        Color(0xFF0D63E5),
-                      ],
+                      colors: [Color(0xFF2B8CFF), Color(0xFF0D63E5)],
                     ),
                   ),
                   child: Icon(tool.icon, color: Colors.white, size: 22),

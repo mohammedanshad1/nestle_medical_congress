@@ -44,9 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         backgroundColor: AppColors.primaryBlue,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         duration: const Duration(seconds: 1),
       ),
     );
@@ -60,10 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: AppColors.backgroundBottom,
         body: IndexedStack(
           index: _currentTabIndex,
-          children: [
-            _buildHomeContent(),
-            const ProfileScreen(),
-          ],
+          children: [_buildHomeContent(), const ProfileScreen()],
         ),
         bottomNavigationBar: _buildBottomNavigationBar(),
       ),
@@ -92,9 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
         // Background Wave Lines & Decorative Dot Grid
         Positioned.fill(
-          child: CustomPaint(
-            painter: BackgroundPatternPainter(),
-          ),
+          child: CustomPaint(painter: BackgroundPatternPainter()),
         ),
 
         // Scrollable Content
@@ -109,7 +102,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  maxWidth: context.responsiveValue(mobile: 480.0, tablet: 640.0),
+                  maxWidth: context.responsiveValue(
+                    mobile: 480.0,
+                    tablet: 640.0,
+                  ),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,7 +125,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     // Featured Event Card: "The Next Era of Nutrition & Health"
                     FeaturedEventCard(
-                      onTap: () => _showFeatureNotice('Featured Event: The Next Era'),
+                      onTap: () =>
+                          _showFeatureNotice('Featured Event: The Next Era'),
                     ),
 
                     const SizedBox(height: 22),
@@ -205,7 +202,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 'Welcome Back,\nDr. Testing 👋',
                 style: GoogleFonts.plusJakartaSans(
                   color: Colors.white,
-                  fontSize: context.responsiveValue(mobile: 27.0, smallPhone: 22.0, tablet: 32.0),
+                  fontSize: context.responsiveValue(
+                    mobile: 27.0,
+                    smallPhone: 22.0,
+                    tablet: 32.0,
+                  ),
                   fontWeight: FontWeight.w900,
                   height: 1.15,
                   letterSpacing: -0.3,
@@ -303,11 +304,9 @@ class _HomeScreenState extends State<HomeScreen> {
         title: 'Agenda',
         icon: Icons.calendar_month_outlined,
         onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const AgendaScreen(),
-            ),
-          );
+          Navigator.of(
+            context,
+          ).push(MaterialPageRoute(builder: (context) => const AgendaScreen()));
         },
       ),
       QuickAccessItem(
@@ -315,9 +314,7 @@ class _HomeScreenState extends State<HomeScreen> {
         icon: Icons.groups_outlined,
         onTap: () {
           Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const SpeakersScreen(),
-            ),
+            MaterialPageRoute(builder: (context) => const SpeakersScreen()),
           );
         },
       ),
@@ -326,9 +323,7 @@ class _HomeScreenState extends State<HomeScreen> {
         icon: Icons.badge_outlined,
         onTap: () {
           Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const NameTagScreen(),
-            ),
+            MaterialPageRoute(builder: (context) => const NameTagScreen()),
           );
         },
       ),
@@ -336,11 +331,9 @@ class _HomeScreenState extends State<HomeScreen> {
         title: 'Venue',
         icon: Icons.location_on_outlined,
         onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const VenueScreen(),
-            ),
-          );
+          Navigator.of(
+            context,
+          ).push(MaterialPageRoute(builder: (context) => const VenueScreen()));
         },
       ),
       QuickAccessItem(
@@ -348,9 +341,7 @@ class _HomeScreenState extends State<HomeScreen> {
         icon: Icons.bar_chart_rounded,
         onTap: () {
           Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const LiveVotingScreen(),
-            ),
+            MaterialPageRoute(builder: (context) => const LiveVotingScreen()),
           );
         },
       ),
@@ -358,11 +349,9 @@ class _HomeScreenState extends State<HomeScreen> {
         title: 'Ask Q&A',
         icon: Icons.chat_bubble_outline_rounded,
         onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const AskQAScreen(),
-            ),
-          );
+          Navigator.of(
+            context,
+          ).push(MaterialPageRoute(builder: (context) => const AskQAScreen()));
         },
       ),
       QuickAccessItem(
@@ -370,9 +359,7 @@ class _HomeScreenState extends State<HomeScreen> {
         icon: Icons.folder_outlined,
         onTap: () {
           Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const ResourcesScreen(),
-            ),
+            MaterialPageRoute(builder: (context) => const ResourcesScreen()),
           );
         },
       ),
@@ -400,9 +387,7 @@ class _HomeScreenState extends State<HomeScreen> {
           subtitle: 'Main Auditorium',
           onTap: () {
             Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const AgendaScreen(),
-              ),
+              MaterialPageRoute(builder: (context) => const AgendaScreen()),
             );
           },
         ),
@@ -416,9 +401,7 @@ class _HomeScreenState extends State<HomeScreen> {
           subtitle: 'Dr. Hassan Ali',
           onTap: () {
             Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const AgendaScreen(),
-              ),
+              MaterialPageRoute(builder: (context) => const AgendaScreen()),
             );
           },
         ),
@@ -432,9 +415,7 @@ class _HomeScreenState extends State<HomeScreen> {
           subtitle: 'Dr. Sarah Johnson',
           onTap: () {
             Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const AgendaScreen(),
-              ),
+              MaterialPageRoute(builder: (context) => const AgendaScreen()),
             );
           },
         ),
@@ -448,10 +429,7 @@ class _HomeScreenState extends State<HomeScreen> {
       decoration: BoxDecoration(
         color: const Color(0xFF061226).withValues(alpha: 0.95),
         border: const Border(
-          top: BorderSide(
-            color: Color(0xFF12284C),
-            width: 1.0,
-          ),
+          top: BorderSide(color: Color(0xFF12284C), width: 1.0),
         ),
       ),
       padding: const EdgeInsets.only(top: 8, bottom: 20),
@@ -503,7 +481,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: Icon(
               icon,
-              color: isSelected ? const Color(0xFF38BDF8) : const Color(0xFF64748B),
+              color: isSelected
+                  ? const Color(0xFF38BDF8)
+                  : const Color(0xFF64748B),
               size: 22,
             ),
           ),
@@ -521,4 +501,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
