@@ -29,6 +29,16 @@ class NestleCongressApp extends StatelessWidget {
           secondary: AppColors.goldAccent,
           surface: AppColors.cardBackground,
         ),
+        snackBarTheme: SnackBarThemeData(
+          backgroundColor: AppColors.primaryBlue,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          contentTextStyle: GoogleFonts.plusJakartaSans(
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+            fontSize: 14,
+          ),
+        ),
       ),
       home: home ?? const SplashScreen(),
     );

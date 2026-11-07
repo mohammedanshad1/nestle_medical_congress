@@ -379,10 +379,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: _buildSocialButton(
                     child: const GoogleLogo(size: 21),
                     onTap: () {
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Google Sign In tapped'),
-                          duration: Duration(seconds: 1),
+                        SnackBar(
+                          content: Text(
+                            'Google Sign In tapped',
+                            style: GoogleFonts.plusJakartaSans(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          backgroundColor: AppColors.primaryBlue,
+                          behavior: SnackBarBehavior.floating,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          duration: const Duration(seconds: 1),
                         ),
                       );
                     },
@@ -393,10 +405,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: _buildSocialButton(
                     child: const AppleLogo(size: 24),
                     onTap: () {
+                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Apple Sign In tapped'),
-                          duration: Duration(seconds: 1),
+                        SnackBar(
+                          content: Text(
+                            'Apple Sign In tapped',
+                            style: GoogleFonts.plusJakartaSans(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          backgroundColor: AppColors.primaryBlue,
+                          behavior: SnackBarBehavior.floating,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          duration: const Duration(seconds: 1),
                         ),
                       );
                     },
@@ -412,10 +436,22 @@ class _LoginScreenState extends State<LoginScreen> {
               child: InkWell(
                 borderRadius: BorderRadius.circular(8),
                 onTap: () {
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Password reset link sent to your email!'),
+                    SnackBar(
+                      content: Text(
+                        'Password reset link sent to your email!',
+                        style: GoogleFonts.plusJakartaSans(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      backgroundColor: AppColors.primaryBlue,
                       behavior: SnackBarBehavior.floating,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      duration: const Duration(seconds: 2),
                     ),
                   );
                 },

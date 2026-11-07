@@ -248,10 +248,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 child: InkWell(
                                   borderRadius: BorderRadius.circular(26),
                                   onTap: () {
+                                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text('Account creation submitted!'),
+                                      SnackBar(
+                                        content: Text(
+                                          'Account creation submitted!',
+                                          style: GoogleFonts.plusJakartaSans(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        backgroundColor: AppColors.primaryBlue,
                                         behavior: SnackBarBehavior.floating,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(12),
+                                        ),
+                                        duration: const Duration(seconds: 2),
                                       ),
                                     );
                                   },
@@ -317,10 +329,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   child: _buildSocialButton(
                                     child: const GoogleLogo(size: 20),
                                     onTap: () {
+                                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
                                       ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(
-                                          content: Text('Google Sign Up tapped'),
-                                          duration: Duration(seconds: 1),
+                                        SnackBar(
+                                          content: Text(
+                                            'Google Sign Up tapped',
+                                            style: GoogleFonts.plusJakartaSans(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                          backgroundColor: AppColors.primaryBlue,
+                                          behavior: SnackBarBehavior.floating,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(12),
+                                          ),
+                                          duration: const Duration(seconds: 1),
                                         ),
                                       );
                                     },
@@ -331,10 +355,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   child: _buildSocialButton(
                                     child: const AppleLogo(size: 24),
                                     onTap: () {
+                                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
                                       ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(
-                                          content: Text('Apple Sign Up tapped'),
-                                          duration: Duration(seconds: 1),
+                                        SnackBar(
+                                          content: Text(
+                                            'Apple Sign Up tapped',
+                                            style: GoogleFonts.plusJakartaSans(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                          backgroundColor: AppColors.primaryBlue,
+                                          behavior: SnackBarBehavior.floating,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(12),
+                                          ),
+                                          duration: const Duration(seconds: 1),
                                         ),
                                       );
                                     },
